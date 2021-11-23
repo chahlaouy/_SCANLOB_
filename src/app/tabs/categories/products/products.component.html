@@ -1,0 +1,75 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="apps-outline" color="primary" class="text-xl"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Scanlob</ion-title>
+    <ion-buttons slot="end" routerLink="/cart-page">
+      <ion-button>
+        <app-cart-icon></app-cart-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div *ngIf="subCategory$ | async as subCategory">
+    <ion-item class="ion-margin-bottom" lines="none" >
+      <ion-icon name="settings" slot="start" size="small" color="dark"></ion-icon>
+      <ion-label>
+        <ul>
+          <li>
+            <div class="text-xl">{{subCategory.name}}</div>
+          </li>
+          <li><span class="text-note">Liste des Produits</span></li>
+        </ul>
+      </ion-label>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <!--  -->
+        <ion-col size="12" *ngFor="let product of subCategory.products">
+          <ion-card color="light" id="card_transparent" class="rounded ion-no-margin ion-no-padding ion-margin-top" *ngIf="!product.loss_id">
+            <ion-card-content class="ion-no-margin ion-no-padding">
+              <div class="flex ion-align-items-start h-28 ion-justify-content-between">
+                <div class="w-28 h-28 ion-margin-end">
+                  <img src="../../../assets/pro.jpg" class="w-full h-28 rounded" />
+                </div>
+                <div class="flex-1 flex flex-col ion-justify-content-between h-28 ion-padding-top ion-padding-bottom">
+                  <div>
+                    <span class="text-note">{{subCategory.name}}</span>
+
+                    <div class="text-sm font-bold ion-margin-bottom">{{product.name}}</div>
+
+                    <div class="flex ion-align-items-center">
+                      <ion-icon name="star" color="warning"></ion-icon>
+                      <ion-icon name="star" color="warning"></ion-icon>
+                      <ion-icon name="star" color="warning"></ion-icon>
+                      <ion-icon name="star" color="warning"></ion-icon>
+                      <ion-icon name="star" color="warning"></ion-icon>
+                    </div>
+
+
+                  </div>
+                  <span class="text-lg font-bold">{{product.price}} €</span>
+
+
+                </div>
+
+              </div>
+              <ion-button expand="block" size="large" color="warning" mode="ios" class="ion-margin-top" [routerLink]="product.id">
+                plus de détails
+              </ion-button>
+            </ion-card-content>
+        </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+</ion-content>

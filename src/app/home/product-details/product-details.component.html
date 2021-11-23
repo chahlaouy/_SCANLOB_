@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="apps-outline" color="primary"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Scanlob</ion-title>
+    <ion-buttons slot="end" routerLink="/cart-page">
+      <ion-button>
+        <app-cart-icon></app-cart-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div *ngIf="product$ | async as product">
+    <ion-item class="ion-margin-bottom" lines="none">
+      <ion-icon
+        name="list-outline"
+        slot="start"
+        size="small"
+        color="dark"
+      ></ion-icon>
+      <ion-label>
+        <ul>
+          <li>
+            <div class="text-lg">{{product.name}}</div>
+          </li>
+          <li>
+            <span class="text-note">{{product.category.name}}</span>
+          </li>
+        </ul>
+      </ion-label>
+    </ion-item>
+    <ion-card class="ion-margin-top" id="card_transparent">
+      <ion-card-content class="ion-no-padding">
+        <div class="flex ion-align-items-start ion-margin-top">
+          <div class="flex-1 ion-padding-end">
+            <img [src]="fsUrl + product.imgs_urls[0]" alt="" class="h-90 bg-cover rounded">
+          </div>
+          <div class="w-100">
+            <div class="w-full" *ngFor="let image of product.imgs_urls">
+              <img [src]="fsUrl + image" alt="" class="h-30 w-full ion-margin-bottom bg-cover rounded">
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+      <ion-card-header class="ion-no-padding ion-margin-top">
+        <ion-card-subtitle class="flex ion-align-items-center ion-justify-content-between">
+          <div>
+            {{product.sub_category.name}}
+          </div>
+          <div class="flex ion-align-items-center">
+            <ion-icon name="star" color="warning"></ion-icon>
+            <ion-icon name="star" color="warning"></ion-icon>
+            <ion-icon name="star" color="warning"></ion-icon>
+            <ion-icon name="star" color="warning"></ion-icon>
+            <ion-icon name="star" color="warning"></ion-icon>
+          </div>
+        </ion-card-subtitle>
+        <ion-card-title>{{product.name}}</ion-card-title>
+        <h1 class="">{{product.price}} €</h1>
+        <div class="ion-margin-top ion-margin-bottom">
+          {{product.description}}
+        </div>
+
+        <ion-button expand="block" size="large" color="warning" mode="ios" class="ion-margin-top" (click)="addProductToCart(product)">
+          <ion-icon name="cart" slot="start"></ion-icon>
+          <ion-label slot="end">Ajouter au panier</ion-label>
+        </ion-button>
+      </ion-card-header>
+    </ion-card>
+
+
+
+  </div>
+
+
+
+</ion-content>

@@ -1,0 +1,131 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start" routerLink="/captain/cars">
+      <ion-button>
+        <ion-icon name="chevron-back" color="primary" class="text-xl"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+        <ion-label class="ion-no-margin">
+          <ul>
+            <li>
+              <div class="text-md">Ahmed</div>
+            </li>
+            <li>
+              <div class="text-note">en ligne</div>
+            </li>
+          </ul>
+        </ion-label>
+      </ion-item>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="box">
+    <!-- SCANLOB note message -->
+    <div class="note-message">
+      <div class="note-message-content">
+        <div>
+          <div class="text-md ion-margin-bottom">
+            Bienvenue Ahmed
+          </div>
+          <div class="text-note ion-margin-bottom">
+            necessitatibus rem, voluptas saepe quisquam doloribus adipisci aut voluptates ab veritatis? qui earum, assumenda,
+          </div>
+          <div>
+            <div class="text-md text-red">
+              Scanlob Team
+            </div>
+            <div class="text-note">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis saepe ab earum soluta, qui maxime. Consectetur
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ngIf="messages$ | async as messages" *ngFor="let messages of message" -->
+    <div>
+      <!-- *ngIf="message.user_id == authUser.user.id" -->
+      <div class="flex item-center ion-justify-content-start ion-padding">
+
+        <div>
+          <div class="flex ion-align-items-end">
+            <div class="profile-img">
+              <img src="../../../../../assets/avatar.png" alt="">
+            </div>
+            <div class="sended-message">
+              <div>message de ma part</div>
+            </div>
+          </div>
+
+          <div class="flex ion-align-items-end ion-justify-content-start timestamp">
+            <div class="">
+              14:00
+            </div>
+            <ion-icon name="checkmark-done-outline"></ion-icon>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- *ngIf="message.user_id != authUser.user.id" -->
+      <div class="flex item-center ion-justify-content-end ion-padding">
+        <div>
+          <div class="flex ion-align-items-end">
+            <div class="received-message">
+              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam fuga harum adipisci perferendis aperiam eum possimus numquam quidem sit architecto. Itaque eos id debitis, harum quas nihil labore aperiam hic!</div>
+            </div>
+            <div class="profile-img">
+              <img src="../../../../../assets/avatar.png" alt="">
+            </div>
+          </div>
+
+          <div class="flex ion-align-items-end ion-justify-content-end timestamp">
+            <div class="">
+              15:00
+            </div>
+            <ion-icon name="checkmark-done-outline"></ion-icon>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- <div class="flex item-center ion-justify-content-end ion-padding">
+      <div>
+        <div class="flex ion-align-items-end">
+          <div class="received-message">
+            <div>124 ريال السعر ساعة الانطلاق بدأ الرحلة عدد المقاعد المتاحة. المحجوزة قائمة الحجوزات حسب الرحلة عدد 1234</div>
+          </div>
+          <div class="profile-img">
+            <img src="../../../../../assets/avatar.png" alt="">
+          </div>
+        </div>
+
+        <div class="flex ion-align-items-start ion-justify-content-end timestamp">
+          <div class="">
+            1234
+          </div>
+          <ion-icon name="checkmark-done-outline"></ion-icon>
+        </div>
+
+      </div>
+    </div> -->
+
+
+  </div>
+  <div class="outer-box">
+
+    <div class="inner-box">
+
+      <textarea  [(ngModel)]="body" placeholder="Votre message"></textarea>
+      <label (click)="sendMessage()">
+        <ion-icon name="chevron-forward-outline" color="light"></ion-icon>
+      </label>
+    </div>
+  </div>
+</ion-content>

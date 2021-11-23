@@ -1,0 +1,130 @@
+<ion-content [fullscreen]="true" color="warning">
+  <form [formGroup]="userProduct" (submit)="onProductSubmit()">
+    <ion-card mode="ios" id="wrapper">
+      <ion-card-content>
+
+        <!-- header -->
+        <ion-header [translucent]="true">
+          <ion-toolbar>
+            <ion-buttons slot="start" routerLink="/user/products">
+              <ion-button>
+                <ion-icon name="chevron-back" color="primary" class="text-xl"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            <ion-title>Mes Produits</ion-title>
+            <ion-buttons slot="end" routerLink="/cart-page">
+              <ion-button>
+                <app-cart-icon></app-cart-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-item class="ion-margin-bottom ion-margin-top" lines="none">
+          <ion-icon name="list" slot="start" size="small" color="dark"></ion-icon>
+          <ion-label>
+            <ul>
+              <li>
+                <div class="text-xl">Mes Produits</div>
+              </li>
+              <li><span class="text-note">Ajouter un produit</span></li>
+            </ul>
+          </ion-label>
+        </ion-item>
+
+        <ion-list lines="none">
+
+          <ion-item>
+            <ion-label>Categorie</ion-label>
+            <ion-select (ionChange)="changeCategory($event)" formControlName="category">
+              <ion-select-option value="" disabled>Choisissez une catégorie</ion-select-option>
+              <ion-select-option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="subCategoryArray">
+            <ion-label>Sous catégorie</ion-label>
+            <ion-select formControlName="subCategory">
+              <ion-select-option value="" disabled>Choisissez une sous catégorie</ion-select-option>
+              <ion-select-option *ngFor="let subCat of subCategoryArray" value="{{subCat.id}}">{{subCat.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Nom Produit</ion-label>
+            <ion-input formControlName="name" placeholder="nom produit"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>UUID</ion-label>
+            <ion-input formControlName="uuid" placeholder="uuid"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>État</ion-label>
+            <ion-input formControlName="state" placeholder="state"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Ville</ion-label>
+            <ion-input formControlName="country" placeholder="ville(optionnelle)"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Payée</ion-label>
+            <ion-input formControlName="city" placeholder="payée(optionnelle)"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Code postale</ion-label>
+            <ion-input formControlName="zip" placeholder="code postale(optionnelle)"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Mini description</ion-label>
+            <ion-textarea formControlName="miniDescription" placeholder="mini description"></ion-textarea>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Description</ion-label>
+            <ion-textarea formControlName="description" placeholder="description"></ion-textarea>
+          </ion-item>
+
+
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- form for changing car -->
+    <ion-card mode="ios" class="ion-margin-top" id="card-transparent">
+      <ion-card-header>
+        <ion-card-subtitle>
+          Téléchargez les photos requises
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+
+        <div class="flex items-center ion-justify-content-around ion-margin-bottom">
+          <div class="fileUpload">
+            <input
+              type="file"
+              class="upload"
+              multiple
+              (change)="onProductImgChange($event)"
+              />
+            <div>
+              <ion-icon name="cube" class="text-xl"></ion-icon>
+              <div>Images</div>
+            </div>
+          </div>
+
+        </div>
+
+        <ion-button class="ion-margin-top" type="submit" expand="block" size="large" color="light">
+          Enregistrer
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

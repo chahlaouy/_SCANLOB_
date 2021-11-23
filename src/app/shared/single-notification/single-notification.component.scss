@@ -1,0 +1,70 @@
+ion-content{
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-start: 0px;
+  --padding-end: 0px;
+}
+ion-card-content{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+ion-card#wrapper{
+  margin: 8px;
+}
+ion-toolbar{
+  padding: 0px;
+  --padding-top: 0px !important;
+  --background: transparent !important;
+}
+ion-item{
+  border-radius: 10px !important;
+}
+#card-transparent{
+  --background: #fff !important;
+  box-shadow: 0px 0px 10px rgb(227, 227, 227);
+}
+.badge, .badge-available, .badge-danger{
+  padding: 5px 20px;
+  border-radius: 10px;
+  line-height: 100%;
+}
+.badge{
+  background-color: #000;
+  color: #fff;
+}
+.badge-available{
+  background-color: #f8c446;
+  color: rgb(28, 28, 28);
+
+}
+.badge-danger{
+  background-color: rgb(250, 53, 53);
+  color: #fff;
+}
+.bg-primary{
+  background: #7842a5;
+  color: #fff;
+  border-radius: 5px;
+}
+.bg-danger{
+  background: rgb(250, 53, 53);
+  color: #fff;
+  border-radius: 5px;
+}
+.bg-light{
+  background: #e2e2e2;
+  border-radius: 5px;
+  // box-shadow: 0px 0px 10px #e2e2e2;
+}
+.bg-warning{
+  background: #fcd420;
+  border-radius: 5px;
+  // box-shadow: 0px 0px 10px #e2e2e2;
+}
+.bg-success{
+  background: #1afe88;
+  border-radius: 5px;
+  color: #454545;
+}

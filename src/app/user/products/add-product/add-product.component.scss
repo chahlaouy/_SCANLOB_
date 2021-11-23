@@ -1,0 +1,75 @@
+ion-content{
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-start: 0px;
+  --padding-end: 0px;
+}
+ion-card-content{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+ion-card#wrapper{
+  margin: 8px;
+}
+ion-toolbar{
+  padding: 0px;
+  --padding-top: 0px !important;
+  --background: transparent !important;
+}
+ul{
+  list-style: none;
+}
+#card-transparent{
+  --background: transparent !important;
+  box-shadow: none !important;
+}
+
+.fileUpload {
+background: #7842a5;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 1.25em auto;
+  overflow: hidden;
+  padding: 0.875em;
+  position: relative;
+  width: 130px;
+  display: flex;
+  height: 130px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.fileUpload:hover, .fileUpload:active, .fileUpload:focus {
+background: #aa77d3;
+  cursor: pointer;
+}
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  width: 130px;
+  height: 130px;
+cursor: pointer;
+}
+
+input[type="file"] {
+  position: fixed;
+  right: 100%;
+  bottom: 100%;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}

@@ -1,0 +1,133 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="apps-outline" color="primary"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Scanlob</ion-title>
+    <ion-buttons slot="end" routerLink="/cart-page">
+      <ion-button>
+        <app-cart-icon></app-cart-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+
+  <ion-card color="primary" mode="ios">
+    <ion-card-content class="ion-no-padding">
+
+      <div class="ion-text-center ion-padding">
+        <div class="text-md-white">
+          bienvenue chez scanlob
+        </div>
+        <hr>
+      </div>
+      <ion-card mode="ios">
+        <ion-card-content>
+          <div routerLink="/auth/register" id="box">
+
+            <div class="flex items-center">
+              <ion-icon name="person" class="ion-margin-end text-note text-lg"></ion-icon>
+              <div>
+                <div class="text-lg">S'inscrire</div>
+                <div class="text-note">
+                  créez votre compte maintenant
+                </div>
+              </div>
+            </div>
+            <div id="icon_1">
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </div>
+        </ion-card-content>
+
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="warning" mode="ios" class="ion-margin-top">
+    <ion-card-content class="ion-no-padding">
+
+      <div class="ion-text-center ion-padding">
+        <div class="text-md">
+          Objet Trouvé
+        </div>
+        <hr>
+      </div>
+      <ion-card mode="ios">
+        <ion-card-content>
+          <div routerLink="/" id="box">
+
+            <div class="flex items-center">
+              <ion-icon name="cube" class="ion-margin-end text-note text-lg"></ion-icon>
+              <div>
+                <div class="text-md">Contacter le propriétaire</div>
+                <div class="text-note">
+                  Vous avez trouvé un objet?
+                </div>
+              </div>
+            </div>
+            <div id="icon_1">
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </div>
+        </ion-card-content>
+
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item detail="false" class="ion-text-center">
+    <ion-label>
+      <span class="text-lg">
+        Nos derniers produits
+      </span>
+    </ion-label>
+  </ion-item>
+
+
+  <div *ngIf="products$ | async as products">
+    <ion-card class="ion-margin-top" id="card_transparent" *ngFor="let product of products">
+      <ion-card-content class="ion-no-padding">
+
+        <div class="flex ion-align-items-start ion-margin-top">
+          <div class="flex-1 ion-padding-end">
+            <img [src]="fsUrl + product.imgs_urls[0]" alt="" class="h-90 bg-cover rounded">
+          </div>
+          <div class="w-100">
+            <div class="w-full" *ngFor="let image of product.imgs_urls">
+              <img [src]="fsUrl + image" alt="" class="h-30 w-full ion-margin-bottom bg-cover rounded">
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+      <ion-card-header class="ion-no-padding ion-margin-top">
+        <ion-card-subtitle class="flex ion-align-items-center ion-justify-content-between">
+          <div>
+            {{product.category.name}}-{{product.sub_category.name}}
+          </div>
+          <div class="flex ion-align-items-center">
+            <ion-icon name="star" color="warning"></ion-icon>
+            <ion-icon name="star" color="warning"></ion-icon>
+            <ion-icon name="star" color="warning"></ion-icon>
+            <ion-icon name="star" color="warning"></ion-icon>
+            <ion-icon name="star" color="warning"></ion-icon>
+          </div>
+        </ion-card-subtitle>
+        <ion-card-title>{{product.name}}</ion-card-title>
+        <h1 class="">{{product.price}} €</h1>
+        <div class="ion-margin-top">
+          {{product.mini_description}}
+        </div>
+        <ion-button expand="block" size="large" color="warning" mode="ios" class="ion-margin-top" [routerLink]="'anouncement/' + product.id">
+          plus de détails
+        </ion-button>
+      </ion-card-header>
+    </ion-card>
+  </div>
+
+
+
+</ion-content>

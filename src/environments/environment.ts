@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  BACK_END_URL_API: "http://127.0.0.1:8000/api",
+  BACK_END_URL: "http://127.0.0.1:8000",
+  BACK_END_FILES: "http://127.0.0.1:8000/uploads/images/",
+  BACK_END: "127.0.0.1"
 };
 
 /*

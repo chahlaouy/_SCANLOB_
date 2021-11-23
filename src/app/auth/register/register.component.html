@@ -1,0 +1,119 @@
+<ion-content [fullscreen]="true">
+  <!-- <div id="logo">
+    <img src="../assets/logo.png" alt="scanlob-logo">
+  </div> -->
+  <ion-card class="ion-no-padding ion-no-margin">
+    <ion-card-header>
+      <ion-card-subtitle>
+        Bienvenue chez Scanlob
+      </ion-card-subtitle>
+      <ion-card-title>
+        Inscription
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="ion-no-padding">
+      <ion-grid>
+        <form [formGroup]="loginForm" (submit)="onRegisterSubmit()">
+          <ion-row>
+            <ion-col>
+              <ion-item color="secondary" lines="none" detail="false">
+                <ion-label position="floating">Nom utilisateur</ion-label>
+                <ion-input formControlName="username"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="loginForm.get('username').touched && !loginForm.get('username').valid">
+            <ion-col>
+              <ion-item lines="none" detail="false" color="danger">
+                {{ validations.required }}
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item color="secondary" lines="none" detail="false">
+                <ion-label position="floating">Email</ion-label>
+                <ion-input type="email" formControlName="email"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="loginForm.get('email').touched && !loginForm.get('email').valid">
+            <ion-col *ngIf="loginForm.get('email').errors.required">
+              <ion-item lines="none" detail="false" color="danger">
+                {{ validations.required }}
+              </ion-item>
+            </ion-col>
+            <ion-col size="12" *ngIf="loginForm.get('email').errors.email">
+              <ion-item lines="none" detail="false" color="danger">
+                {{ validations.email }}
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item color="secondary" lines="none" detail="false">
+                <ion-label position="floating">Ville</ion-label>
+                <ion-input type="text" formControlName="country"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item color="secondary" lines="none" detail="false">
+                <ion-label position="floating">Payée</ion-label>
+                <ion-input type="text" formControlName="city"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item color="secondary" lines="none" detail="false">
+                <ion-label position="floating">Code Postale</ion-label>
+                <ion-input type="text" formControlName="zip"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item color="secondary" lines="none" detail="false">
+                <ion-label position="floating">Mot de passe</ion-label>
+                <ion-input formControlName="password" type="password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="loginForm.get('password').touched && !loginForm.get('password').valid">
+            <ion-col>
+              <ion-item lines="none" detail="false" color="danger">
+                {{ validations.required }}
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-margin-top">
+            <ion-col>
+              <ion-button expand="block" size="large" color="warning" type="submit">
+                Inscription
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="ion-margin-top text-center">
+                  <div class="text-sm"> Vous avez un compte ? </div>
+                  <div class="text-md ion-margin-top"> Se connecter </div>
+              </div>
+              <!-- <ion-button expand="block" size="large"  color="light" routerLink="/auth/login">
+                تسجيل الدخول
+              </ion-button> -->
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

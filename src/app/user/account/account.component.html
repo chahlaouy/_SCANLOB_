@@ -1,0 +1,47 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="apps-outline" color="primary" class="text-xl"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mon Compte</ion-title>
+    <ion-buttons slot="end" routerLink="/cart-page">
+      <ion-button>
+        <app-cart-icon></app-cart-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-item class="ion-margin-bottom" lines="none" >
+    <ion-icon name="settings" slot="start" size="small" color="dark"></ion-icon>
+    <ion-label>
+      <ul>
+        <li>
+          <div class="text-xl">Mon compte</div>
+        </li>
+        <li><span class="text-note">Information personnel(le)</span></li>
+      </ul>
+    </ion-label>
+  </ion-item>
+
+  <ion-list lines="none">
+
+    <ion-item color="light" lines="none" detail="false" class="ion-margin-bottom" routerLink="/user/compte-bancaire">
+      <ion-label class="ion-padding-bottom ion-padding-top">Mon compte banquaire</ion-label>
+      <ion-icon name="card" color="primary" slot="end" class="ion-padding-bottom ion-padding-top"></ion-icon>
+    </ion-item>
+
+    <ion-item color="light" lines="none" detail="false" class="ion-margin-bottom" routerLink="/user/profile">
+      <ion-label class="ion-padding-bottom ion-padding-top">Profile</ion-label>
+      <ion-icon name="person" color="primary" slot="end" class="ion-padding-bottom ion-padding-top"></ion-icon>
+    </ion-item>
+
+
+
+
+  </ion-list>
+
+</ion-content>

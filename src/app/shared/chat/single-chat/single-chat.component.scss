@@ -1,0 +1,86 @@
+ion-toolbar{
+    padding: 0px;
+    --padding-top: 0px !important;
+    --background: #fff !important;
+    border-bottom: 1px solid #ccc;
+}
+ion-content{
+    --background: #f7f7f7;
+    --padding-top: 0px;
+    --padding-bottom: 0px;
+    --padding-start: 0px;
+    --padding-end: 0px;
+}
+
+textarea{
+    border: none;
+    padding: 12px;
+    width: 100%;
+    outline: none;
+    background: #ffffff;
+    border: 1px solid #d3d3d3;
+    border-radius: 15px;
+}
+div.outer-box{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    padding: 15px 10px;
+    background: #fff;
+    .inner-box{
+        position: relative;
+        label{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            background-color: #9d4bee;
+            padding: 12px 20px;
+            border: 1px solid #d3d3d3;
+            color: #1a1a1a;
+            border-radius: 15px;
+        }
+    }
+}
+.received-message, .sended-message{
+    padding: 20px;
+    border-radius: 15px;
+    margin: 10px 5px;
+    max-width: 200px;
+    color: #454545;
+    border: 1px solid  #dadada;
+}
+.received-message{
+    border-bottom-right-radius: 0px;
+    background: #ffffff;
+}
+.sended-message{
+    border-bottom-left-radius: 0px;
+    background: #ffffff;
+}
+
+.timestamp{
+    padding: 5px;
+    font-size: 14px;
+    color: #656565;
+}
+.box{
+    margin-bottom: 70px;
+}
+.note-message-content{
+    padding: 40px;
+    background: #fff;
+    border-radius: 10px;
+}
+.note-message{
+    padding: 20px;
+    background: #9da7b5;
+}
+.text-red{
+    color: rgb(247, 65, 65);
+}
+.profile-img img{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}

@@ -1,0 +1,26 @@
+<div id="drop_back">
+  <div id="display_error">
+
+    <ion-card color="dark">
+      <ion-card-header>
+        <ion-card-subtitle>
+          <span>Erreur</span>
+        </ion-card-subtitle>
+        <!-- <ion-card-title></ion-card-title> -->
+      </ion-card-header>
+
+      <ion-card-content>
+        <ul>
+          <li>
+            {{errorMessage.error}}
+          </li>
+        </ul>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="ion-text-center" (click)="closeErrorMessagesDialog()">
+      <ion-card-content>
+        <span>Fermer</span>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</div>

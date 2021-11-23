@@ -1,0 +1,143 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="apps-outline" color="primary"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Scanlob</ion-title>
+    <ion-buttons slot="end" routerLink="/cart-page">
+      <ion-button>
+        <app-cart-icon></app-cart-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div *ngIf="product">
+
+    <ion-card class="ion-margin-top" id="card_transparent">
+      <ion-card-content class="ion-no-padding">
+
+        <!-- <div class="flex ion-align-items-start ion-margin-top">
+          <div class="flex-1 ion-padding-end">
+            <img [src]="fsUrl + product.product.imgs_urls[0]" alt="" class="h-90 bg-cover rounded">
+          </div>
+          <div class="w-100">
+            <div class="w-full" *ngFor="let image of product.product.imgs_urls">
+              <img [src]="fsUrl + image" alt="" class="h-30 w-full ion-margin-bottom bg-cover rounded">
+            </div>
+          </div>
+        </div> -->
+
+        <ion-slides [options]="sliderOptions" class="ion-padding ion-margin-bottom" pager>
+          <ion-slide *ngFor="let slide of sliderImages" class="ion-padding-start ion-padding-end">
+            <img [src]="slide" alt="images" class="ion-margin-bottom" />
+          </ion-slide>
+        </ion-slides>
+
+      </ion-card-content>
+      <ion-card-header class="ion-no-padding ion-margin-top">
+        <ion-card-subtitle class="flex ion-align-items-center ion-justify-content-between">
+          <div>
+            {{product.product.category.name}} {{product.product.sub_category.name}}
+          </div>
+
+        </ion-card-subtitle>
+        <ion-card-title>{{product.product.name}}</ion-card-title>
+        <h1 class="text-md">Perdu: {{product.created_at}}</h1>
+        <div class="ion-margin-top ion-margin-bottom">
+          <span class="text-note">
+            {{product.location.adminAreaLevel1}} {{product.location.adminAreaLevel2}}
+          </span><br>
+          <span class="text-note">
+            {{product.location.locality}}
+          </span>
+        </div>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-item lines="none" detail="false">
+      <ion-label slot="end">
+        <div class="flex ion-align-items-center flex-1">
+          <div class="flex ion-align-items-center ion-margin-end">
+            <ion-icon
+              name="heart"
+              class="text-lg ion-margin-end"
+              color="danger"
+            ></ion-icon>
+            <span class="text-xs">123</span>
+          </div>
+
+          <div class="flex ion-align-items-center">
+            <ion-icon
+              name="chatbubbles"
+              class="text-lg ion-margin-end"
+              color="primary"
+            ></ion-icon>
+            <span class="text-xs">
+              {{product.comments_count}}
+            </span>
+          </div>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-card id="card_transparent" class="ion-no-padding ion-no-margin">
+      <ion-card-header class="ion-no-padding ion-no-margin">
+        <ion-card-title>
+          <ion-item lines="full" detail="false">
+            <ion-label> Commentaires </ion-label>
+          </ion-item>
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content class="ion-no-padding ion-no-margin ion-margin-top">
+        <div *ngIf="comments.length > 0">
+          <div class="flex ion-align-items-start ion-margin-bottom ion-margin-top" *ngFor="let comment of comments">
+            <div>
+              <ion-avatar class="ion-margin-end">
+                <img src="../../../../assets/avatar.png">
+              </ion-avatar>
+            </div>
+            <div>
+              <div class="text-note ion-margin-bottom flex ion-align-items-center">
+                <span class="ion-margin-end">
+                  {{comment.author.username}}
+                </span>
+                <span class="ion-margin-end font-bold">a dit</span>
+                <span>
+                  {{comment.created_at}}
+                </span>
+              </div>
+              <div class="text-sm"
+                >
+                {{comment.body}}
+              </div
+              >
+
+            </div>
+          </div>
+        </div>
+        <div *ngIf="comments.length === 0">
+          <ion-item lines="none" detail="false">
+            <span class="text-note">Il n'y a pas encore de commentaires soyez le premier</span>
+          </ion-item>
+        </div>
+        <div *ngIf="authUser">
+          <ion-item>
+            <ion-label position="floating">Votre commentaire</ion-label>
+            <ion-textarea [(ngModel)]="body"></ion-textarea>
+          </ion-item>
+          <div class="flex ion-justify-content-end">
+            <ion-button size="small" color="primary" (click)="addComment()">
+              Commenter
+            </ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+
+</ion-content>

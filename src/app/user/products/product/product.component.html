@@ -1,0 +1,92 @@
+<ion-content [fullscreen]="true" color="warning">
+
+  <ion-card mode="ios" id="wrapper">
+    <ion-card-content>
+
+      <!-- header -->
+      <ion-header [translucent]="true">
+        <ion-toolbar>
+          <ion-buttons slot="start" routerLink="/user/products">
+            <ion-button>
+              <ion-icon name="chevron-back" color="primary" class="text-xl"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title>Mes produits</ion-title>
+          <ion-buttons slot="end" routerLink="/cart-page">
+            <ion-button>
+              <app-cart-icon></app-cart-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-item class="ion-margin-bottom ion-margin-top" lines="none">
+        <ion-icon name="list" slot="start" size="small" color="dark"></ion-icon>
+        <ion-label>
+          <ul>
+            <li>
+              <div class="text-xl">{{product.name}}</div>
+            </li>
+            <li><span class="text-note">Information sur le produit</span></li>
+          </ul>
+        </ion-label>
+      </ion-item>
+      <!-- selected car -->
+      <ion-slides [options]="sliderOptions" class="ion-padding ion-margin-bottom" pager>
+        <ion-slide *ngFor="let slide of sliderImages" class="ion-padding-start ion-padding-end">
+          <img [src]="slide" alt="images" class="ion-margin-bottom" />
+        </ion-slide>
+      </ion-slides>
+      <div class="ion-margin-top ion-text-center">
+        <div class="text-xl">
+          <span> {{product.uuid}} </span>
+
+        </div>
+
+        <div class="text-note">
+          {{product.description}}
+        </div>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card mode="ios" id="card-transparent">
+    <ion-card-header>
+      <ion-card-subtitle>
+        En Vente
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="flex items-center ion-justify-content-between">
+        <div>
+          <div class="text-lg">
+            En Vente
+          </div>
+          <div class="text-note">
+            Mettre le produit en vente
+          </div>
+        </div>
+        <!-- toggle button -->
+        <div id="silent-mode">
+
+
+          <div class="toggle-button-cover">
+            <div class="button-cover">
+              <div class="button r" id="button-1">
+                <input type="checkbox" class="checkbox">
+                <div class="knobs"></div>
+                <div class="layer"></div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

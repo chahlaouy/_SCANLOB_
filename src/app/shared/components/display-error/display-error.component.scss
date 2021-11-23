@@ -1,0 +1,30 @@
+#display_error{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 15px 5px;
+    z-index: 999;
+}
+span{
+    color: rgb(237, 55, 55);
+}
+#drop_back{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99 !important;
+}
+ion-item{
+    --background: rgba(0,0,0,0) !important;
+    color: rgb(230, 60, 60);
+}
+ion-list{
+    background: rgba(0, 0, 0, 0) !important;
+}

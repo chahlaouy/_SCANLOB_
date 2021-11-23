@@ -1,0 +1,48 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="apps-outline" color="primary" class="text-xl"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Catégoreis</ion-title>
+    <ion-buttons slot="end" routerLink="/cart-page">
+      <ion-button>
+        <app-cart-icon></app-cart-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-item class="ion-margin-bottom" lines="none" >
+    <ion-icon name="settings" slot="start" size="small" color="dark"></ion-icon>
+    <ion-label>
+      <ul>
+        <li>
+          <div class="text-xl">Catégoreis</div>
+        </li>
+        <li><span class="text-note">Liste des Catégories</span></li>
+      </ul>
+    </ion-label>
+  </ion-item>
+  <div *ngIf="categories$ | async as categories">
+
+    <ion-list lines="none" *ngFor="let category of categories">
+
+
+      <ion-item color="primary" class="ion-margin-bottom" lines="none" detail="false">
+        <ion-icon name="list" color="light" class="ion-padding-bottom ion-padding-top ion-margin-end"></ion-icon>
+        <ion-label class="ion-padding-bottom ion-padding-top">{{category.name}} ({{category.sub_categories_count}})</ion-label>
+
+      </ion-item>
+
+      <ion-item *ngFor="let subCategory of category.sub_categories" color="light" class="ion-margin-bottom" lines="none" detail="false" [routerLink]="subCategory.id + '/products'">
+        <ion-label class="ion-padding-bottom ion-padding-top">{{subCategory.name}} ({{subCategory.products_count}})</ion-label>
+        <ion-icon name="chevron-forward-outline" color="dark" slot="end" class="ion-padding-bottom ion-padding-top"></ion-icon>
+      </ion-item>
+
+    </ion-list>
+  </div>
+
+</ion-content>

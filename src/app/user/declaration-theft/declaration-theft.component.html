@@ -1,0 +1,86 @@
+<ion-content [fullscreen]="true" color="warning">
+  <ion-card mode="ios" id="wrapper"  *ngIf="products$ | async as products">
+    <ion-card-content>
+      <ion-header [translucent]="true">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button>
+              <ion-icon name="apps-outline" color="primary" class="text-xl"></ion-icon>
+            </ion-menu-button>
+          </ion-buttons>
+          <ion-title>Déclaration vol</ion-title>
+          <ion-buttons slot="end" routerLink="/cart-page">
+            <ion-button>
+              <app-cart-icon></app-cart-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-item class="ion-margin-bottom ion-margin-top" lines="none">
+        <ion-icon name="cube" slot="start" size="small" color="dark"></ion-icon>
+        <ion-label>
+          <ul>
+            <li>
+              <div class="text-xl">Déclaration vol</div>
+            </li>
+            <li><span class="text-note">Ça prend seulement 2 minutes !</span></li>
+          </ul>
+        </ion-label>
+      </ion-item>
+
+      <!-- Ride destination and surce -->
+
+
+
+      <ion-item class="ion-margin-bottom ion-margin-top" lines="none">
+        <ion-icon name="barcode" slot="start" size="small" color="dark"></ion-icon>
+        <ion-label>
+          <ul>
+            <li>
+              <div class="text-md">Séléctionner votre objet</div>
+            </li>
+          </ul>
+        </ion-label>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-label>Produit</ion-label>
+        <ion-select [(ngModel)]="productId" value="" okText="Confirmer" cancelText="Rejeter">
+          <ion-select-option value="">Votre objet</ion-select-option>
+          <ion-select-option *ngFor="let product of products" [value]="product.id">
+
+            {{product.name}}--{{product.uuid}}
+          </ion-select-option>
+
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom ion-margin-top" lines="none" color="primary">
+        <ion-icon name="pin" slot="start" size="small" color="light"></ion-icon>
+        <ion-label>
+          <ul>
+            <li>
+              <div class="text-lg">Localisation</div>
+            </li>
+            <li class="ion-margin-bottom ">
+              <span class="text-note-white">
+                Oû avez vous perdu l'objet ?
+              </span>
+            </li>
+            <li>
+              <input (keydown.enter)="$event.preventDefault()" placeholder="Localisation" autocorrect="off"
+                autocapitalize="off" spellcheck="off" type="text" #localisation class="search-map text-dark">
+            </li>
+          </ul>
+        </ion-label>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card mode="ios" class="ion-margin-top" id="card-transparent">
+    <ion-button class="ion-margin-top" type="submit" expand="block" size="large" color="light"  (click)="declareLossObject()">
+      Envoyer
+    </ion-button>
+  </ion-card>
+</ion-content>

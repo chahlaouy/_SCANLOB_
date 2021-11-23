@@ -1,0 +1,73 @@
+<ion-content [fullscreen]="true">
+  <div id="logo">
+    <img src="../assets/logo.png" alt="scanlob-logo">
+  </div>
+
+  <ion-card class="ion-no-padding ion-no-margin">
+    <ion-card-header>
+      <ion-card-subtitle>
+        Content de vous revoir !
+      </ion-card-subtitle>
+      <ion-card-title>
+        Connexion
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="ion-no-padding">
+      <ion-grid>
+        <form [formGroup]="loginForm" (submit)="onLoginSubmit()">
+          <ion-row>
+            <ion-col>
+              <ion-item color="secondary" lines="none" detail="false">
+                <ion-label position="floating">Email</ion-label>
+                <ion-input  formControlName="username"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="loginForm.get('username').touched && !loginForm.get('username').valid">
+            <ion-col>
+              <ion-item lines="none" detail="false" color="danger">
+                {{ validations.required }}
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item color="secondary" lines="none" detail="false">
+                <ion-label position="floating">Mot de passe</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="loginForm.get('password').touched && !loginForm.get('password').valid">
+            <ion-col>
+              <ion-item lines="none" detail="false" color="danger">
+                {{ validations.required }}
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-margin-top">
+            <ion-col>
+              <ion-button expand="block" size="large" color="warning" type="submit">
+                Connexion
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="ion-margin-top text-center">
+                <div class="text-sm"> Vous n'avez pas encore de compte ? </div>
+                <div class="text-md ion-margin-top"> Créez votre compte</div>
+              </div>
+              <!-- <ion-button expand="block" size="large"  color="light" routerLink="/auth/register">
+                Inscription
+              </ion-button> -->
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

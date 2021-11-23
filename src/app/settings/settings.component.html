@@ -1,0 +1,64 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="apps-outline" color="primary" class="text-xl"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Parametres</ion-title>
+    <ion-buttons slot="end" routerLink="/cart-page">
+      <ion-button>
+        <app-cart-icon></app-cart-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-item class="ion-margin-bottom" lines="none" >
+    <ion-icon name="settings" slot="start" size="small" color="dark"></ion-icon>
+    <ion-label>
+      <ul>
+        <li>
+          <div class="text-xl">Parametres</div>
+        </li>
+        <li><span class="text-note">Configuration de l'application</span></li>
+      </ul>
+    </ion-label>
+  </ion-item>
+  <ion-list lines="none">
+
+    <ion-item color="light" class="ion-margin-bottom" lines="none" detail="false">
+      <ion-label class="ion-padding-bottom ion-padding-top">Changer mot de passe</ion-label>
+      <ion-icon name="lock-open-outline" color="primary" slot="end" class="ion-padding-bottom ion-padding-top"></ion-icon>
+    </ion-item>
+
+    <ion-item color="light" class="ion-margin-bottom" lines="none" detail="false">
+      <ion-label class="ion-padding-bottom ion-padding-top">Langue</ion-label>
+      <ion-icon name="earth-outline" color="primary" slot="end" class="ion-padding-bottom ion-padding-top"></ion-icon>
+    </ion-item>
+
+    <ion-item color="light" class="ion-margin-bottom" lines="none" detail="false">
+      <ion-label class="ion-padding-bottom ion-padding-top">Mode nuit</ion-label>
+      <ion-icon name="contrast-outline" color="primary" slot="end" class="ion-padding-bottom ion-padding-top"></ion-icon>
+    </ion-item>
+
+    <ion-item color="light" class="ion-margin-bottom" lines="none" detail="false">
+      <ion-label class="ion-padding-bottom ion-padding-top">Faqs</ion-label>
+      <ion-icon name="chatbubble-ellipses-outline" color="primary" slot="end" class="ion-padding-bottom ion-padding-top"></ion-icon>
+    </ion-item>
+
+    <ion-item color="light" class="ion-margin-bottom" lines="none" detail="false">
+      <ion-label class="ion-padding-bottom ion-padding-top">Réclamations et suggestions</ion-label>
+      <ion-icon name="help-buoy-outline" color="primary" slot="end" class="ion-padding-bottom ion-padding-top"></ion-icon>
+    </ion-item>
+
+    <ion-item color="light" lines="none" detail="false">
+      <ion-label class="ion-padding-bottom ion-padding-top">Termes et conditions</ion-label>
+      <ion-icon name="information-circle-outline" color="primary" slot="end" class="ion-padding-bottom ion-padding-top"></ion-icon>
+    </ion-item>
+
+
+  </ion-list>
+
+</ion-content>

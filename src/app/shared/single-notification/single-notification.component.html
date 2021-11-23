@@ -1,0 +1,101 @@
+<ion-content [fullscreen]="true" color="warning">
+  <ion-card mode="ios" id="wrapper">
+    <ion-card-content>
+
+      <ion-header [translucent]="true">
+        <ion-toolbar>
+          <ion-buttons slot="start" routerLink="/notifications">
+            <ion-button>
+              <app-notification-icon></app-notification-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title>{{ title }}</ion-title>
+          <ion-buttons slot="end" routerLink="/notifications">
+            <ion-button>
+              <ion-icon name="chevron-back" color="primary" class="text-xl"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+
+      <div *ngIf="notification$ | async as notification">
+        <ion-item class="ion-margin-bottom ion-margin-top" lines="none">
+          <ion-icon name="car" slot="start" size="small" color="dark"></ion-icon>
+          <ion-label>
+            <ul>
+              <li>
+                <div class="text-xl">الرحلة رقم {{notification.data.request.ride.id}} </div>
+              </li>
+              <li>
+                <div class="text-note">رقم الطلب {{notification.data.request.id}}</div>
+              </li>
+
+            </ul>
+          </ion-label>
+        </ion-item>
+
+        <ion-card mode="ios">
+          <ion-card-header>
+            <ion-card-subtitle color="danger" class="flex ion-justify-content-end">
+              {{notification.created_at}}
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <img src="../../../../assets/avatar.png">
+              </ion-thumbnail>
+              <ion-label>
+                <ul>
+                  <li>
+                    <div class="text-md" >{{notification.data.user.username}}</div>
+                  </li>
+
+                  <li *ngIf="notification.data.user.age">
+                    <div class="text-note"> {{notification.data.user.age}} السن</div>
+                  </li>
+
+                  <li *ngIf="!notification.data.user.age">
+                    <div class="text-note">السن غير مسجل</div>
+                  </li>
+
+                  <li *ngIf="notification.data.user.gender">
+                    <div class="text-note"> {{notification.data.user.gender}} الجنس</div>
+                  </li>
+
+                  <li *ngIf="!notification.data.user.gender">
+                    <div class="text-note"> الجنس غير مسجل </div>
+                  </li>
+
+                </ul>
+              </ion-label>
+            </ion-item>
+
+            <div class="flex items-center ion-justify-content-between ion-margin-bottom ion-margin-top" *ngIf=" notification.type == 'App\\Notifications\\RequestSended' ">
+              <span class="text-note">عدد المقاعد المطلوبة</span>
+              <div class="badge-available"> {{notification.data.request.numberOfRequestedSeats}} مقاعد</div>
+            </div>
+
+            <div class="flex items-center ion-justify-content-between ion-margin-bottom ion-margin-top" *ngIf=" notification.type == 'App\\Notifications\\RequestAccepted' ">
+              <span class="text-note">الحالة</span>
+              <div class="badge-available">قبول طلب الحجز</div>
+            </div>
+
+            <div class="flex items-center ion-justify-content-between ion-margin-bottom ion-margin-top" *ngIf=" notification.type == 'App\\Notifications\\RequestDeclined' ">
+              <span class="text-note">الحالة</span>
+              <div class="badge-danger">رفض طلب الحجز</div>
+            </div>
+
+          </ion-card-content>
+        </ion-card>
+
+      </div>
+
+
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

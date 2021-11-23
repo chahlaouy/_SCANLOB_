@@ -1,0 +1,131 @@
+<ion-content [fullscreen]="true" color="warning">
+
+  <ion-card mode="ios" id="wrapper">
+    <ion-card-content>
+
+      <!-- header -->
+      <ion-header [translucent]="true">
+        <ion-toolbar>
+          <!-- <ion-buttons slot="start">
+            <ion-button>
+              <ion-icon name="notifications-outline" color="primary" class="text-xl"></ion-icon>
+            </ion-button>
+          </ion-buttons> -->
+          <ion-title>{{ title }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-menu-button>
+              <ion-icon name="apps" color="primary"></ion-icon>
+            </ion-menu-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-item class="ion-margin-bottom ion-margin-top" lines="none">
+        <ion-icon name="notifications" slot="start" size="small" color="dark"></ion-icon>
+        <ion-label>
+          <ul>
+            <li>
+              <div class="text-xl">{{title}}</div>
+            </li>
+            <li><span class="text-note">قائمة الاشعارات</span></li>
+          </ul>
+        </ion-label>
+      </ion-item>
+
+      <ion-list lines="none" *ngIf="notifications$ | async as notifications">
+
+        <ion-item-sliding class="ion-margin-bottom" *ngFor="let notification of notifications">
+          <ion-item [class]="notification.read_at ? 'read' : 'unread'" [routerLink]="notification.id" lines="none" detail="false" *ngIf=" notification.type == 'App\\Notifications\\RequestSended' ">
+            <ion-icon name="notifications-outline" slot="start" size="small" color="danger"></ion-icon>
+
+            <ion-label>
+              <ul>
+                <li>
+                  <div class="text-md">
+                    <span>
+                      طلب حجز
+                      &nbsp;&nbsp;_&nbsp;{{notification.data.request.numberOfRequestedSeats}}&nbsp;_&nbsp;&nbsp;
+                      مقاعد
+                    </span>
+                  </div>
+                </li>
+                <li class="flex ion-justify-content-between">
+                  <span class="text-note">
+                    رقم الرحلة
+                    {{notification.data.request.ride.id}}
+                  </span>
+                  <span class="text-note">{{notification.created_at}}</span>
+                </li>
+
+              </ul>
+            </ion-label>
+          </ion-item>
+
+          <ion-item [class]="notification.read_at ? 'read' : 'unread'" [routerLink]="notification.id" lines="none" detail="false" *ngIf="notification.type == 'App\\Notifications\\RequestAccepted'">
+            <ion-icon name="notifications-outline" slot="start" size="small" color="danger"></ion-icon>
+
+            <ion-label>
+              <ul>
+                <li>
+                  <div class="text-md">
+                    <span>
+                      تم قبول طلب الرحلة
+                    </span>
+                  </div>
+                </li>
+                <li class="flex ion-justify-content-between">
+                  <span class="text-note">
+                    رقم الرحلة
+                    {{notification.data.request.ride.id}}
+                  </span>
+                  <span class="text-note">{{notification.created_at}}</span>
+                </li>
+
+              </ul>
+            </ion-label>
+          </ion-item>
+
+          <ion-item [class]="notification.read_at ? 'read' : 'unread'" [routerLink]="notification.id" lines="none" detail="false" *ngIf="notification.type == 'App\\Notifications\\RequestDeclined'">
+            <ion-icon name="notifications-outline" slot="start" size="small" color="danger"></ion-icon>
+
+            <ion-label>
+              <ul>
+                <li>
+                  <div class="text-md">
+                    <span>
+                      تم الغاء طلب الرحلة
+                    </span>
+                  </div>
+                </li>
+                <li class="flex ion-justify-content-between">
+                  <span class="text-note">
+                    رقم الرحلة
+                    {{notification.data.request.ride.id}}
+                  </span>
+                  <span class="text-note">{{notification.created_at}}</span>
+                </li>
+
+              </ul>
+            </ion-label>
+          </ion-item>
+
+          <ion-item-options side="end">
+            <ion-item-option (click)="deleteNotification(notification.id)">حذف</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+
+
+      </ion-list>
+
+      <ion-infinite-scroll (ionInfinite)="loadMoreData($event)" threshold="10px">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="جاري التحميل"
+        >
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

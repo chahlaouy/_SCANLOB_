@@ -1,29 +1,83 @@
 <ion-app>
+  <app-loading-spinner *ngIf="spinner$ | async"></app-loading-spinner>
+  <div *ngIf="errorMessage$ | async as errorMessage">
+    <app-display-error [errorMessage]="errorMessage"></app-display-error>
+  </div>
+  <div *ngIf="successMessage$ | async as successMessage">
+    <app-success-message [successMessage]="successMessage"></app-success-message>
+  </div>
+
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+      <ion-content *ngIf="!(authenticatedUser$ | async )">
+        <ion-card id="auth_card" mode="ios">
+          <ion-card-header>
+            <ion-card-subtitle>
+              Bienvenue chez scanlob
+            </ion-card-subtitle>
+            <ion-card-title>
+
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+
+            <ion-menu-toggle auto-hide="false">
+              <ion-card id="auth_card" routerLink="/auth/register">
+
+                <ion-card-content>
+                  <div id="box">
+                    <div id="icon">
+                      <ion-icon name="person-add-outline" color="dark"></ion-icon>
+                    </div>
+                    <span>Inscription</span>
+                  </div>
+                </ion-card-content>
+
+              </ion-card>
+            </ion-menu-toggle>
+
+            <ion-menu-toggle auto-hide="false">
+              <ion-card id="auth_card" routerLink="/auth/login" color="primary">
+
+                <ion-card-content>
+                  <div id="box">
+                    <div id="icon">
+                      <ion-icon name="log-in-outline" color="light"></ion-icon>
+                    </div>
+                    <span>Se connecter</span>
+                  </div>
+                </ion-card-content>
+
+              </ion-card>
+            </ion-menu-toggle>
+
+          </ion-card-content>
+
+        </ion-card>
+      </ion-content>
+      <ion-content *ngIf="authenticatedUser$ | async as authUser">
+        <ion-list>
+          <div id="menu-header" class="ion-margin-bottom ">
+            <div id="header-content" >
+              <img src="../assets/avatar.png" alt="user-avatar">
+              <ion-label class="text-left">
+                <h2>{{ authUser.user.username }}</h2>
+              <p> {{ authUser.user.email }}</p>
+              </ion-label>
+            </div>
+          </div>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-icon slot="start" [ios]="p.icon" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
-
-          <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
-          </ion-item>
-        </ion-list>
       </ion-content>
     </ion-menu>
+
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>

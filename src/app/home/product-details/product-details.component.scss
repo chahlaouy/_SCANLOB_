@@ -1,0 +1,7 @@
+ion-header::after {
+  background-image: none;
+}
+#card_transparent{
+  --background: transparent !important;
+  box-shadow: none !important;
+}

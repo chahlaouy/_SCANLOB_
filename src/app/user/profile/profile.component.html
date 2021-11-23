@@ -1,0 +1,113 @@
+<ion-content [fullscreen]="true" color="warning">
+  <form [formGroup]="userInfo" (submit)="onUserInfoSubmit()">
+    <ion-card mode="ios" id="wrapper">
+      <ion-card-content>
+
+        <!-- header -->
+        <ion-header [translucent]="true">
+          <ion-toolbar>
+            <ion-buttons slot="start" routerLink="/user/account">
+              <ion-button>
+                <ion-icon name="chevron-back" color="primary" class="text-xl"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            <ion-title>Profile</ion-title>
+            <ion-buttons slot="end" routerLink="/cart-page">
+              <ion-button>
+                <app-cart-icon></app-cart-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-item class="ion-margin-bottom ion-margin-top" lines="none">
+          <ion-icon name="car-sport" slot="start" size="small" color="dark"></ion-icon>
+          <ion-label>
+            <ul>
+              <li>
+                <div class="text-xl">Mon Profile</div>
+              </li>
+              <li><span class="text-note">Information personel(le)</span></li>
+            </ul>
+          </ion-label>
+        </ion-item>
+
+        <ion-list lines="none">
+
+          <ion-item>
+            <ion-label>Nom utilisateur</ion-label>
+            <ion-input formControlName="username" placeholder="nom"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Email</ion-label>
+            <ion-input formControlName="email" placeholder="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Age</ion-label>
+            <ion-input formControlName="age" placeholder="age"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Téléphone</ion-label>
+            <ion-input formControlName="phone" placeholder="téléphone"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Ville</ion-label>
+            <ion-input formControlName="country" placeholder="ville"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Payée</ion-label>
+            <ion-input formControlName="state" placeholder="payée"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Code postale</ion-label>
+            <ion-input formControlName="zip" placeholder="code postale"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Sexe</ion-label>
+            <ion-select formControlName="gender">
+              <ion-select-option value="" disabled>sexe</ion-select-option>
+              <ion-select-option value="male">Homme</ion-select-option>
+              <ion-select-option value="male">Femme</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- form for changing car -->
+    <ion-card mode="ios" class="ion-margin-top" id="card-transparent">
+      <ion-card-header>
+        <ion-card-subtitle>
+          Télécharger Votre photo de profil
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+
+        <div class="flex items-center ion-justify-content-around ion-margin-bottom">
+          <div class="fileUpload">
+            <input
+              type="file"
+              class="upload"
+              (change)="onUserImgChange($event)"
+              />
+            <div>
+              <ion-icon name="person" class="text-xl"></ion-icon>
+              <div>Photo de profil</div>
+            </div>
+          </div>
+
+        </div>
+
+        <ion-button class="ion-margin-top" type="submit" expand="block" size="large" color="light">
+          Mettre a jour
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>
