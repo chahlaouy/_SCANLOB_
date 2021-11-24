@@ -11,6 +11,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { LossProductComponent } from './loss-products/product/product.component';
 import { TheftProductsComponent } from './theft-products/theft-products.component';
 import { TheftProductComponent } from './theft-products/product/product.component';
+import { FoundedProductsComponent } from './founded-products/founded-products.component';
+import { DetailComponent } from './founded-products/detail/detail.component';
 
 
 const routes: Routes = [
@@ -57,6 +59,14 @@ const routes: Routes = [
   {
     path: 'theft-products/:id',
     component: TheftProductComponent
+  },
+  {
+    path: 'found-products',
+    component: FoundedProductsComponent
+  },
+  {
+    path: 'found-products/:id',
+    component: DetailComponent
   },
 
 

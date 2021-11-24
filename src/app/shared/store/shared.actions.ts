@@ -64,6 +64,16 @@ export const addCommentSuccess = createAction(ADD_COMMENT_SUCCESS, props<{commen
 export const PUT_PRODUCTS_COMMENTS = "[shared state] put products comments";
 export const putProductComments = createAction(PUT_PRODUCTS_COMMENTS, props<{comments: any}>());
 
+export const ADD_FOUND_PRODUCT_START = "[shared state] add found product start";
+export const ADD_FOUND_PRODUCT_SUCCESS = "[shared state] add found product success";
+export const addFoundProductStart = createAction(ADD_FOUND_PRODUCT_START, props<{
+  productUuid: number,
+  location: any,
+  status: any
+  }>());
+export const addFoundProductSuccess = createAction(ADD_FOUND_PRODUCT_SUCCESS);
+
+
 
 
 

@@ -24,7 +24,7 @@
         </div>
         <hr>
       </div>
-      <ion-card mode="ios">
+      <ion-card mode="ios" *ngIf="!authenticatedUser$">
         <ion-card-content>
           <div routerLink="/auth/register" id="box">
 
@@ -58,7 +58,7 @@
       </div>
       <ion-card mode="ios">
         <ion-card-content>
-          <div routerLink="/" id="box">
+          <div routerLink="found-product" id="box">
 
             <div class="flex items-center">
               <ion-icon name="cube" class="ion-margin-end text-note text-lg"></ion-icon>

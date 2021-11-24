@@ -1,0 +1,44 @@
+ion-content{
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-start: 0px;
+  --padding-end: 0px;
+}
+ion-card-content{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+ion-card#wrapper{
+  margin: 8px;
+}
+ion-toolbar{
+  padding: 0px;
+  --padding-top: 0px !important;
+  --background: transparent !important;
+}
+ion-item{
+  border-radius: 10px !important;
+}
+#card-transparent{
+  --background: transparent !important;
+  box-shadow: none !important;
+}
+
+hr{
+  background: rgb(154, 154, 154) !important;
+}
+
+input.search-map{
+  width: 100%;
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: 1px solid #f8c446;
+}
+.text-dark{
+  color: #292929;
+}
+.hidden{
+  display: none;
+}

@@ -27,14 +27,14 @@
         <ion-label>
           <ul>
             <li>
-              <div class="text-xl">Objets perdus</div>
+              <div class="text-xl">Objets trouvés</div>
             </li>
-            <li><span class="text-note">liste des objets perdus</span></li>
+            <li><span class="text-note">liste des objets trouvés</span></li>
           </ul>
         </ion-label>
       </ion-item>
 
-      <ion-button
+      <!-- <ion-button
         class="ion-margin-top ion-margin-bottom"
         type="submit"
         expand="block"
@@ -43,7 +43,7 @@
         routerLink="declaration"
       >
         Déclaration perte
-      </ion-button>
+      </ion-button> -->
 
       <ion-list lines="none" *ngIf="products$ | async as products">
         <!--   -->

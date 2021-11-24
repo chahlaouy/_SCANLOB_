@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, repeat } from 'rxjs/operators';
 import {
+  getLatestProductsStart,
   setErrorMessage,
   setLoadingSpinner,
   setSuccessMessage,
@@ -20,6 +21,7 @@ import {
   getProductsSuccess,
   restoreLossProductStart,
   restoreLossProductSuccess,
+  toggleSellableStart,
 
 } from './user.actions';
 import { UserService } from '../services/user.service';
@@ -108,6 +110,27 @@ export class UserEffect {
             this.store.dispatch(setLoadingSpinner({ status: false }));
             this.store.dispatch(setSuccessMessage({ successMessage: data }));
             return getLossProductsStart();
+          })
+        );
+      }),
+      catchError((errorResponse) => {
+        this.store.dispatch(setLoadingSpinner({ status: false }));
+        return of(setErrorMessage({ errorMessage: errorResponse.error }));
+      }),
+      repeat()
+    );
+  });
+  // TOGGLE SELLABLE
+
+  toggleSellable$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(toggleSellableStart),
+      mergeMap((action) => {
+        return this.userService.toggleSellable(action.id).pipe(
+          map((data) => {
+            this.store.dispatch(setLoadingSpinner({ status: false }));
+            this.store.dispatch(setSuccessMessage({ successMessage: data }));
+            return getLatestProductsStart({page: 1});
           })
         );
       }),

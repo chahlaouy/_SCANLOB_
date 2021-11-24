@@ -11,6 +11,10 @@ export class UserService {
     private http: HttpClient
   ) { }
 
+  toggleSellable(id: number){
+    return this.http.get<any>(`${environment.BACK_END_URL_API}/products/sellable/${id}`);;
+  }
+
   getUserLossProducts(){
     return this.http.get<any>(`${environment.BACK_END_URL_API}/loss-products`);;
   }
@@ -20,7 +24,7 @@ export class UserService {
       product_id,
       location,
       status,
-    });;
+    });
   }
 
   restoreUserLossProduct(id: number){

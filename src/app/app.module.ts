@@ -68,7 +68,6 @@ declare const Pusher: any;
   ],
   entryComponents: [],
   imports: [
-
     NotIconModule,
     CartModule,
     BrowserModule,
@@ -78,7 +77,6 @@ declare const Pusher: any;
     FormsModule,
     StoreModule.forRoot(AppReducer),
     EffectsModule.forRoot([AuthEffect, SharedEffect, UserEffect]),
-
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

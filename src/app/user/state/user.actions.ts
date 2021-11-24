@@ -43,4 +43,9 @@ export const restoreLossProductStart = createAction(RESTORE_LOSS_PRODUCT_START, 
 export const restoreLossProductSuccess = createAction(RESTORE_LOSS_PRODUCT_SUCCESS);
 
 
+export const TOGGLE_SELLABLE_START = "[user state] toggle sellable start";
+export const TOGGLE_SELLABLE_SUCCESS = "[user state] toggle sellable success";
+
+export const toggleSellableStart = createAction(TOGGLE_SELLABLE_START, props<{id: number}>());
+export const toggleSellableSuccess = createAction(TOGGLE_SELLABLE_SUCCESS);
 

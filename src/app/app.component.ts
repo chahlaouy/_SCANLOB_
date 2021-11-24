@@ -32,6 +32,7 @@ export class AppComponent  implements OnInit{
     { title: 'Mes produits', url: '/user/products', icon: 'cube' },
     { title: 'Objets perdus', url: '/user/loss-products', icon: 'remove-circle' },
     { title: 'Objets volu', url: '/user/theft-products', icon: 'warning' },
+    { title: 'Objets trouvé', url: '/user/found-products', icon: 'cube' },
     { title: 'Se déconnecter', url: '/folder/Trash', icon: 'log-out' },
   ];
 

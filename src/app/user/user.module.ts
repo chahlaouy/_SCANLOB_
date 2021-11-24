@@ -21,6 +21,8 @@ import { LossProductsComponent } from './loss-products/loss-products.component';
 import { LossProductComponent } from './loss-products/product/product.component';
 import { TheftProductComponent } from './theft-products/product/product.component';
 import { TheftProductsComponent } from './theft-products/theft-products.component';
+import { FoundedProductsComponent } from './founded-products/founded-products.component';
+import { DetailComponent } from './founded-products/detail/detail.component';
 
 
 
@@ -36,7 +38,9 @@ import { TheftProductsComponent } from './theft-products/theft-products.componen
     LossProductsComponent,
     LossProductComponent,
     TheftProductComponent,
-    TheftProductsComponent
+    TheftProductsComponent,
+    FoundedProductsComponent,
+    DetailComponent
   ],
   imports: [
     NotIconModule,

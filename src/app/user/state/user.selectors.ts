@@ -30,6 +30,10 @@ export const getUserTheftProducts = createSelector(getUserLossesProducts, losses
     return lossesProducts.filter(prod => prod.loss_product.status == "theft-object");
 });
 
+export const getUserFoundProducts = createSelector(getUserLossesProducts, lossesProducts => {
+    return lossesProducts.filter(prod => prod.loss_product.status == "found-object");
+});
+
 export const getProductById = createSelector(getUserProducts, getCurrentRouterParam,(products, route: RouterStateUrl) => {
 
   return products.find((product) => product.id == route.params.id

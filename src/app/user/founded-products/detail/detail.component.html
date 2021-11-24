@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true" color="warning">
 
-  <ion-card mode="ios" id="wrapper">
+  <ion-card mode="ios" id="wrapper" *ngIf="product">
     <ion-card-content>
 
       <!-- header -->
@@ -55,39 +55,16 @@
   <ion-card mode="ios" id="card-transparent">
     <ion-card-header>
       <ion-card-subtitle>
-        En Vente
+        Objet Trouvé
       </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      <div class="flex items-center ion-justify-content-between">
-        <div>
-          <div class="text-lg">
-            En Vente
-          </div>
-          <div class="text-note">
-            Mettre le produit en vente
-          </div>
+        <div class="text-note ion-margin-bottom">
+          Déclarer objet comme trouvé
         </div>
-        <ion-item>
-          <ion-toggle [(ngModel)]="isSellable" (ionChange)="toggleSellable($event)"></ion-toggle>
-        </ion-item>
-        <!-- toggle button -->
-        <!-- <div id="silent-mode">
-
-
-          <div class="toggle-button-cover">
-            <div class="button-cover">
-              <div class="button r" id="button-1">
-                <input (change)="toggleSellable($event)" value="oui" type="radio" class="checkbox">
-                <div class="knobs"></div>
-                <div class="layer"></div>
-              </div>
-            </div>
-          </div>
-
-
-        </div> -->
-      </div>
+        <ion-button class="ion-margin-top ion-margin-bottom" type="submit" expand="block" size="large" color="light" (click)="restoreObject()">
+          Objet Trouvé
+        </ion-button>
     </ion-card-content>
   </ion-card>
 
