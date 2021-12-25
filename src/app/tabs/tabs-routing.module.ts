@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CartPageComponent } from '../cart-page/cart-page.component';
+import { PaymentPageComponent } from '../payment-page/payment-page.component';
+import { SettingsComponent } from '../settings/settings.component';
+import { ChatComponent } from '../shared/chat/chat/chat.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductDetailsComponent } from './categories/product-details/product-details.component';
 import { ProductsComponent } from './categories/products/products.component';
@@ -42,10 +46,27 @@ const routes: Routes = [
         component: ProductDetailsComponent
       },
       {
+        path: 'user',
+        loadChildren: () => import('../user/user.module').then( m => m.UserModule)
+      },
+      {
+        path: 'cart-page',
+        component: CartPageComponent
+      },
+      {
+        path: 'checkout',
+        component: PaymentPageComponent
+      },
+      {
+        path: 'chat',
+        component: ChatComponent
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
       },
+
 
     ]
   }

@@ -1,0 +1,103 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon
+          name="apps-outline"
+          color="primary"
+          class="text-xl"
+        ></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Panier</ion-title>
+    <ion-buttons slot="end" routerLink="/tabs/cart-page">
+      <ion-button>
+        <app-cart-icon></app-cart-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-item class="ion-margin-bottom" lines="none">
+    <ion-icon name="cart" slot="start" size="small" color="dark"></ion-icon>
+    <ion-label>
+      <ul>
+        <li>
+          <div class="text-xl">Panier</div>
+        </li>
+        <li><span class="text-note">Commande</span></li>
+      </ul>
+    </ion-label>
+  </ion-item>
+  <form (ngSubmit)="handleForm($event)">
+    <ion-card class="ion-margin-top ion-margin-bottom">
+      <ion-card-header>
+        <ion-card-subtitle> détails de facturation </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input [(ngModel)]="billingInfo.email" placeholder="email" name="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Téléphone</ion-label>
+          <ion-input [(ngModel)]="billingInfo.phone" placeholder="téléphone" name="phone"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Ville</ion-label>
+          <ion-input [(ngModel)]="billingInfo.country" placeholder="ville" name="country"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Payée</ion-label>
+          <ion-input [(ngModel)]="billingInfo.city" placeholder="payée" name="city"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Code postale</ion-label>
+          <ion-input [(ngModel)]="billingInfo.zip" placeholder="code postale" name="zip"></ion-input>
+        </ion-item>
+
+        <div #cardElement class="ion-margin-bottom ion-margin-top ion-padding-bottom ion-padding-top">
+
+        </div>
+        <p>
+          {{ cardErrors }}
+        </p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="ion-margin-top ion-margin-bottom">
+      <ion-card-header>
+        <ion-card-title> Total </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="flex ion-justify-content-between">
+          <span class="text-note">Total HT</span>
+          <span class="text-note">{{ billingInfo.total }} €</span>
+        </div>
+        <div class="flex ion-justify-content-between ion-margin-top">
+          <span class="text-note">TVA</span>
+          <span class="text-note">20%</span>
+        </div>
+        <div class="flex ion-justify-content-between ion-margin-top">
+          <span class="text-note">Total TTC</span>
+          <span class="text-note">{{ billingInfo.totalTTC }} €</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button
+      *ngIf="number != 0"
+      class="ion-margin-top"
+      color="primary"
+      (click)="checkout($event)"
+      expand="block"
+      size="large"
+      mode="ios"
+    >
+      <ion-icon name="card" slot="start"></ion-icon>
+      <ion-label> Acheter maintenant </ion-label>
+    </ion-button>
+  </form>
+</ion-content>

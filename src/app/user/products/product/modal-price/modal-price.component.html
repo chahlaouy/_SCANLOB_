@@ -1,0 +1,24 @@
+<ion-content [fullscreen]="true" color="warning">
+  <div id="box" class="flex ion-justify-content-center">
+    <ion-card mode="ios" id="wrapper">
+      <ion-card-content>
+        <div
+          class="
+            ion-margin-top ion-margin-bottom
+            flex
+            ion-justify-content-between ion-align-items-center
+          "
+        >
+          <ion-button color="primary" (click)="toggleSellable()">En vendette</ion-button>
+          <ion-button color="danger" (click)="dismiss()">Annuler</ion-button>
+        </div>
+        <ion-item lines="none" detail="false" class="margin-top-150">
+          <ion-label> Prix de produit </ion-label>
+          <ion-input [(ngModel)]="price" placeholder="Prix de produit">
+
+          </ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

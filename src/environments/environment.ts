@@ -9,6 +9,13 @@ export const environment = {
   BACK_END_FILES: "http://127.0.0.1:8000/uploads/images/",
   BACK_END: "127.0.0.1"
 };
+// export const environment = {
+//   production: false,
+//   BACK_END_URL_API: "https://www.digigate.tn/api",
+//   BACK_END_URL: "https://www.digigate.tn",
+//   BACK_END_FILES: "https://www.digigate.tn/uploads/images/",
+//   BACK_END: "https://www.digigate.tn"
+// };
 
 /*
  * For easier debugging in development mode, you can import the following file

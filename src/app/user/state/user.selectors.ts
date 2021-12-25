@@ -46,3 +46,24 @@ export const getLossProductById = createSelector(getUserLossesProducts, getCurre
   )
 });
 
+export const getUserChatrooms = createSelector(getUserState, state => {
+
+  return state.chatRooms;
+});
+
+export const selectSingleChatroom = createSelector(getUserChatrooms, getCurrentRouterParam,(chatRooms, route: RouterStateUrl) => {
+
+  return chatRooms.find((chatRoom) => chatRoom.id == route.params.id);
+});
+
+export const selectUserMessages = createSelector(getUserState, state => {
+  return state.messages;
+});
+
+export const getAccount = createSelector(getUserState, state => {
+  return state.bankAccount;
+});
+
+
+
+

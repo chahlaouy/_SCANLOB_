@@ -64,9 +64,13 @@ div.outer-box{
     font-size: 14px;
     color: #656565;
 }
+
 .box{
-    margin-bottom: 70px;
+  // margin-bottom: 70px;
+  height: 650px;
+  overflow: scroll;
 }
+
 .note-message-content{
     padding: 40px;
     background: #fff;
@@ -83,4 +87,8 @@ div.outer-box{
     width: 30px;
     height: 30px;
     border-radius: 100%;
+}
+.flex-col{
+  display: flex;
+  flex-direction: column-reverse;
 }

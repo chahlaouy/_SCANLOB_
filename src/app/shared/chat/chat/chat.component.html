@@ -10,195 +10,46 @@
             </ion-menu-button>
           </ion-buttons>
           <ion-title>Boîte de réception</ion-title>
-          <ion-buttons slot="end" routerLink="/cart-page">
+          <ion-buttons slot="end" routerLink="/tabs/cart-page">
             <ion-button>
               <app-cart-icon></app-cart-icon>
             </ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
-
-      <ion-item-sliding>
-        <ion-item color="light" class="ion-margin-bottom">
-          <ion-avatar slot="start">
-            <img src="../../../../assets/avatar.png">
-          </ion-avatar>
-          <ion-label>
-            <ul>
-              <li class="flex items-center ion-justify-content-between">
-                <div class="text-md ion-margin-bottom">Ymen Sai</div>
-                <div class="text-note">
-                  14:00
-                </div>
-                <li>
-                  <div class="text-note">
-                    Lorem ipsum, dolor sit amet consectetur
+      <ion-list *ngIf="chatrooms">
+        <ion-item-sliding *ngFor="let chatroom of chatrooms">
+          <ion-item color="light" class="ion-margin-bottom" [routerLink]="chatroom.id">
+            <ion-avatar slot="start">
+              <img src="../../../../assets/avatar.png">
+            </ion-avatar>
+            <ion-label>
+              <ul>
+                <li class="flex items-center ion-justify-content-between">
+                  <div class="text-md ion-margin-bottom">
+                    {{chatroom.name}}
                   </div>
-                </li>
-            </ul>
-          </ion-label>
-        </ion-item>
-
-        <ion-item-options side="end">
-          <ion-item-option (click)="unread(item)">Supprimer</ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding>
-        <ion-item color="light" class="ion-margin-bottom">
-          <ion-avatar slot="start">
-            <img src="../../../../assets/avatar.png">
-          </ion-avatar>
-          <ion-label>
-            <ul>
-              <li class="flex items-center ion-justify-content-between">
-                <div class="text-md ion-margin-bottom">Foulen</div>
-                <div class="text-note">
-                  14:00
-                </div>
-                <li>
                   <div class="text-note">
-                    Lorem ipsum, dolor sit amet consectetur
+                    {{chatroom.created_at}}
                   </div>
-                </li>
-            </ul>
-          </ion-label>
-        </ion-item>
+                  <li>
+                    <div class="text-note" *ngIf="chatroom.messages.length == 0">
+                      Pas encore de message
+                    </div>
+                    <div class="text-note" *ngIf="chatroom.messages.length > 0">
+                      {{chatroom.messages[0].body}}
+                    </div>
+                  </li>
+              </ul>
+            </ion-label>
+          </ion-item>
 
-        <ion-item-options side="end">
-          <ion-item-option (click)="unread(item)">Supprimer</ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
+          <ion-item-options side="end">
+            <ion-item-option (click)="delt(item)">Supprimer</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
 
-      <ion-item-sliding>
-        <ion-item color="light" class="ion-margin-bottom">
-          <ion-avatar slot="start">
-            <img src="../../../../assets/avatar.png">
-          </ion-avatar>
-          <ion-label>
-            <ul>
-              <li class="flex items-center ion-justify-content-between">
-                <div class="text-md ion-margin-bottom">foulena</div>
-                <div class="text-note">
-                  14:00
-                </div>
-                <li>
-                  <div class="text-note">
-                    Lorem ipsum, dolor sit amet consectetur
-                  </div>
-                </li>
-            </ul>
-          </ion-label>
-        </ion-item>
-
-        <ion-item-options side="end">
-          <ion-item-option (click)="unread(item)">Supprimer</ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding>
-        <ion-item color="light" class="ion-margin-bottom">
-          <ion-avatar slot="start">
-            <img src="../../../../assets/avatar.png">
-          </ion-avatar>
-          <ion-label>
-            <ul>
-              <li class="flex items-center ion-justify-content-between">
-                <div class="text-md ion-margin-bottom">Ymen Sai</div>
-                <div class="text-note">
-                  14:00
-                </div>
-                <li>
-                  <div class="text-note">
-                    Lorem ipsum, dolor sit amet consectetur
-                  </div>
-                </li>
-            </ul>
-          </ion-label>
-        </ion-item>
-
-        <ion-item-options side="end">
-          <ion-item-option (click)="unread(item)">Supprimer</ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding>
-        <ion-item color="light" class="ion-margin-bottom">
-          <ion-avatar slot="start">
-            <img src="../../../../assets/avatar.png">
-          </ion-avatar>
-          <ion-label>
-            <ul>
-              <li class="flex items-center ion-justify-content-between">
-                <div class="text-md ion-margin-bottom">Ahmed</div>
-                <div class="text-note">
-                  14:00
-                </div>
-                <li>
-                  <div class="text-note">
-                    Lorem ipsum, dolor sit amet consectetur
-                  </div>
-                </li>
-            </ul>
-          </ion-label>
-        </ion-item>
-
-        <ion-item-options side="end">
-          <ion-item-option (click)="unread(item)">Supprimer</ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding>
-        <ion-item color="light" class="ion-margin-bottom">
-          <ion-avatar slot="start">
-            <img src="../../../../assets/avatar.png">
-          </ion-avatar>
-          <ion-label>
-            <ul>
-              <li class="flex items-center ion-justify-content-between">
-                <div class="text-md ion-margin-bottom">John</div>
-                <div class="text-note">
-                  14:00
-                </div>
-                <li>
-                  <div class="text-note">
-                    Lorem ipsum, dolor sit amet consectetur
-                  </div>
-                </li>
-            </ul>
-          </ion-label>
-        </ion-item>
-
-        <ion-item-options side="end">
-          <ion-item-option (click)="unread(item)">Supprimer</ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding>
-        <ion-item color="light" class="ion-margin-bottom">
-          <ion-avatar slot="start">
-            <img src="../../../../assets/avatar.png">
-          </ion-avatar>
-          <ion-label>
-            <ul>
-              <li class="flex items-center ion-justify-content-between">
-                <div class="text-md ion-margin-bottom">Janette</div>
-                <div class="text-note">
-                  14:00
-                </div>
-                <li>
-                  <div class="text-note">
-                    Lorem ipsum, dolor sit amet consectetur
-                  </div>
-                </li>
-            </ul>
-          </ion-label>
-        </ion-item>
-
-        <ion-item-options side="end">
-          <ion-item-option (click)="unread(item)">Supprimer</ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
 
 
     </ion-card-content>

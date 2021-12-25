@@ -15,12 +15,20 @@ import {
   addLossProductStart,
   addLossProductSuccess,
   addProductStart,
+  getBankAccountStart,
+  getBankAccountSuccess,
+  getChatroomsStart,
+  getChatroomsSuccess,
   getLossProductsStart,
   getLossProductsSuccess,
   getProductsStart,
   getProductsSuccess,
   restoreLossProductStart,
   restoreLossProductSuccess,
+  sendMessageStart,
+  sendMessageSuccess,
+  setBankAccountStart,
+  setBankAccountSuccess,
   toggleSellableStart,
 
 } from './user.actions';
@@ -126,7 +134,7 @@ export class UserEffect {
     return this.actions$.pipe(
       ofType(toggleSellableStart),
       mergeMap((action) => {
-        return this.userService.toggleSellable(action.id).pipe(
+        return this.userService.toggleSellable(action.id, action.price).pipe(
           map((data) => {
             this.store.dispatch(setLoadingSpinner({ status: false }));
             this.store.dispatch(setSuccessMessage({ successMessage: data }));
@@ -163,14 +171,87 @@ export class UserEffect {
     );
   });
 
-  // REDIRECT RESTORE LOSS PRODUCT
-//   restoreLossProductRedirect$ = createEffect(() => {
-//     return this.actions$.pipe(
-//         ofType(restoreLossProductSuccess),
-//         map((action) => {
-//             this.router.navigate(['/']);
-//         })
-//     )
-// }, {dispatch: false});
+  // GET CHATROOMS
+
+  getChatrooms$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(getChatroomsStart),
+      mergeMap((action) => {
+        return this.userService.getUserChatrooms().pipe(
+          map((data) => {
+            this.store.dispatch(setLoadingSpinner({ status: false }));
+            return getChatroomsSuccess({chatrooms: data});
+          })
+        );
+      }),
+      catchError((errorResponse) => {
+        this.store.dispatch(setLoadingSpinner({ status: false }));
+        return of(setErrorMessage({ errorMessage: errorResponse.error }));
+      }),
+      repeat()
+    );
+  });
+  // SEND MESSAGE
+
+  sendMessage$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(sendMessageStart),
+      mergeMap((action) => {
+        return this.userService.sendMessage(action.body, action.id).pipe(
+          map((data) => {
+            this.store.dispatch(setLoadingSpinner({ status: false }));
+            return sendMessageSuccess({message: data});
+          })
+        );
+      }),
+      catchError((errorResponse) => {
+        this.store.dispatch(setLoadingSpinner({ status: false }));
+        return of(setErrorMessage({ errorMessage: errorResponse.error }));
+      }),
+      repeat()
+    );
+  });
+  // GET BANK ACCOUNT
+
+  getAccount$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(getBankAccountStart),
+      mergeMap((action) => {
+        return this.userService.getUserBankAccount().pipe(
+          map((data) => {
+            this.store.dispatch(setLoadingSpinner({ status: false }));
+            return getBankAccountSuccess({account: data});
+          })
+        );
+      }),
+      catchError((errorResponse) => {
+        this.store.dispatch(setLoadingSpinner({ status: false }));
+        return of(setErrorMessage({ errorMessage: errorResponse.error }));
+      }),
+      repeat()
+    );
+  });
+  // SET BANK ACCOUNT
+
+  setAccount$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(setBankAccountStart),
+      mergeMap((action) => {
+        return this.userService.setUserBankAccount(action.account).pipe(
+          map((data) => {
+            this.store.dispatch(setLoadingSpinner({ status: false }));
+            this.store.dispatch(setSuccessMessage({successMessage: data}));
+            return setBankAccountSuccess({account: data.account});
+          })
+        );
+      }),
+      catchError((errorResponse) => {
+        this.store.dispatch(setLoadingSpinner({ status: false }));
+        return of(setErrorMessage({ errorMessage: errorResponse.error }));
+      }),
+      repeat()
+    );
+  });
+
 
 }

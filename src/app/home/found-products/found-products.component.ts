@@ -20,7 +20,7 @@ export class FoundProductsComponent implements OnInit {
 
   location = {
     latitude: 0,
-    longitude: 0 ,
+    longitude: 0,
     adminAreaLevel1: "",
     adminAreaLevel2: "",
     locality: ""

@@ -22,4 +22,22 @@ export class User{
     get userId(){
       return this.id;
     }
+    get name(){
+      return this.username;
+    }
+    get userEmail(){
+      return this.email;
+    }
+    get userZip(){
+      return this.zip;
+    }
+    get userPhone(){
+      return this.phone;
+    }
+    get userCountry(){
+      return this.country;
+    }
+    get userCity(){
+      return this.city;
+    }
 }

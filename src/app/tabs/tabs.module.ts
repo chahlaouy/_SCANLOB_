@@ -13,6 +13,9 @@ import { ProductsComponent } from './categories/products/products.component';
 import { DetailsComponent } from './list-loss-products/details/details.component';
 import { CartModule } from '../cart/cart.module';
 import { ProductDetailsComponent } from './categories/product-details/product-details.component';
+import { ChatComponent } from '../shared/chat/chat/chat.component';
+import { CartPageComponent } from '../cart-page/cart-page.component';
+import { PaymentPageComponent } from '../payment-page/payment-page.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { ProductDetailsComponent } from './categories/product-details/product-de
     ListLossProductsComponent,
     ProductsComponent,
     DetailsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ChatComponent,
+    CartPageComponent,
+    PaymentPageComponent
   ]
 })
 export class TabsPageModule {}

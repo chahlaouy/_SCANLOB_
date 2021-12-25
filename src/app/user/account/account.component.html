@@ -7,7 +7,7 @@
       </ion-menu-button>
     </ion-buttons>
     <ion-title>Mon Compte</ion-title>
-    <ion-buttons slot="end" routerLink="/cart-page">
+    <ion-buttons slot="end" routerLink="/tabs/cart-page">
       <ion-button>
         <app-cart-icon></app-cart-icon>
       </ion-button>
@@ -29,12 +29,17 @@
 
   <ion-list lines="none">
 
-    <ion-item color="light" lines="none" detail="false" class="ion-margin-bottom" routerLink="/user/compte-bancaire">
+    <ion-item color="light" lines="none" detail="false" class="ion-margin-bottom" routerLink="/tabs/user/bank-account">
       <ion-label class="ion-padding-bottom ion-padding-top">Mon compte banquaire</ion-label>
       <ion-icon name="card" color="primary" slot="end" class="ion-padding-bottom ion-padding-top"></ion-icon>
     </ion-item>
 
-    <ion-item color="light" lines="none" detail="false" class="ion-margin-bottom" routerLink="/user/profile">
+    <ion-item color="light" lines="none" detail="false" class="ion-margin-bottom" routerLink="/tabs/user/wallet">
+      <ion-label class="ion-padding-bottom ion-padding-top">Portefeuille</ion-label>
+      <ion-icon name="wallet" color="primary" slot="end" class="ion-padding-bottom ion-padding-top"></ion-icon>
+    </ion-item>
+
+    <ion-item color="light" lines="none" detail="false" class="ion-margin-bottom" routerLink="/tabs/user/profile">
       <ion-label class="ion-padding-bottom ion-padding-top">Profile</ion-label>
       <ion-icon name="person" color="primary" slot="end" class="ion-padding-bottom ion-padding-top"></ion-icon>
     </ion-item>

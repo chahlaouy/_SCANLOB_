@@ -1,6 +1,6 @@
 <ion-header >
   <ion-toolbar>
-    <ion-buttons slot="start" routerLink="/captain/cars">
+    <ion-buttons slot="start" routerLink="/chat">
       <ion-button>
         <ion-icon name="chevron-back" color="primary" class="text-xl"></ion-icon>
       </ion-button>
@@ -8,16 +8,16 @@
 
       <ion-item lines="none">
         <ion-avatar slot="start">
-          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          <img src="../../../../../assets/avatar.png">
         </ion-avatar>
-        <ion-label class="ion-no-margin">
+        <ion-label class="ion-no-margin" *ngIf="authUser">
           <ul>
             <li>
-              <div class="text-md">Ahmed</div>
+              <div class="text-md">{{authUser.user.name}}</div>
             </li>
-            <li>
+            <!-- <li>
               <div class="text-note">en ligne</div>
-            </li>
+            </li> -->
           </ul>
         </ion-label>
       </ion-item>
@@ -26,7 +26,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="box">
+  <div class="box" #scrollMe [scrollTop]="scrollMe.scrollHeight">
     <!-- SCANLOB note message -->
     <div class="note-message">
       <div class="note-message-content">
@@ -48,75 +48,60 @@
         </div>
       </div>
     </div>
-    <!-- ngIf="messages$ | async as messages" *ngFor="let messages of message" -->
-    <div>
-      <!-- *ngIf="message.user_id == authUser.user.id" -->
-      <div class="flex item-center ion-justify-content-start ion-padding">
+    <!--  -->
+    <div *ngIf="messages$ | async as messages" class="flex-col">
+      <div *ngFor="let message of messages">
 
-        <div>
-          <div class="flex ion-align-items-end">
-            <div class="profile-img">
-              <img src="../../../../../assets/avatar.png" alt="">
-            </div>
-            <div class="sended-message">
-              <div>message de ma part</div>
-            </div>
-          </div>
+        <div class="flex item-center ion-justify-content-start ion-padding" *ngIf="message.user_id != authUser.user.userId">
 
-          <div class="flex ion-align-items-end ion-justify-content-start timestamp">
-            <div class="">
-              14:00
+          <div>
+            <div class="flex ion-align-items-end">
+              <div class="profile-img">
+                <img src="../../../../../assets/avatar.png" alt="">
+              </div>
+              <div class="sended-message">
+                <div>
+                  {{message.body}}
+                </div>
+              </div>
             </div>
-            <ion-icon name="checkmark-done-outline"></ion-icon>
-          </div>
 
-        </div>
+            <div class="flex ion-align-items-end ion-justify-content-start timestamp">
+              <div class="">
+                {{message.created_at}}
+              </div>
+              <ion-icon name="checkmark-done-outline"></ion-icon>
+            </div>
 
-      </div>
-      <!-- *ngIf="message.user_id != authUser.user.id" -->
-      <div class="flex item-center ion-justify-content-end ion-padding">
-        <div>
-          <div class="flex ion-align-items-end">
-            <div class="received-message">
-              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam fuga harum adipisci perferendis aperiam eum possimus numquam quidem sit architecto. Itaque eos id debitis, harum quas nihil labore aperiam hic!</div>
-            </div>
-            <div class="profile-img">
-              <img src="../../../../../assets/avatar.png" alt="">
-            </div>
-          </div>
-
-          <div class="flex ion-align-items-end ion-justify-content-end timestamp">
-            <div class="">
-              15:00
-            </div>
-            <ion-icon name="checkmark-done-outline"></ion-icon>
           </div>
 
         </div>
+
+        <div class="flex item-center ion-justify-content-end ion-padding" *ngIf="message.user_id == authUser.user.userId">
+          <div>
+            <div class="flex ion-align-items-end">
+              <div class="received-message">
+                <div>
+                  {{message.body}}
+                </div>
+              </div>
+              <div class="profile-img">
+                <img src="../../../../../assets/avatar.png" alt="">
+              </div>
+            </div>
+
+            <div class="flex ion-align-items-end ion-justify-content-end timestamp">
+              <div class="">
+                {{message.created_at}}
+              </div>
+              <ion-icon name="checkmark-done-outline"></ion-icon>
+            </div>
+
+          </div>
+        </div>
       </div>
+
     </div>
-    <!-- <div class="flex item-center ion-justify-content-end ion-padding">
-      <div>
-        <div class="flex ion-align-items-end">
-          <div class="received-message">
-            <div>124 ريال السعر ساعة الانطلاق بدأ الرحلة عدد المقاعد المتاحة. المحجوزة قائمة الحجوزات حسب الرحلة عدد 1234</div>
-          </div>
-          <div class="profile-img">
-            <img src="../../../../../assets/avatar.png" alt="">
-          </div>
-        </div>
-
-        <div class="flex ion-align-items-start ion-justify-content-end timestamp">
-          <div class="">
-            1234
-          </div>
-          <ion-icon name="checkmark-done-outline"></ion-icon>
-        </div>
-
-      </div>
-    </div> -->
-
-
   </div>
   <div class="outer-box">
 

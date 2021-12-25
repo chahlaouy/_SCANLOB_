@@ -1,0 +1,59 @@
+<ion-content [fullscreen]="true" color="warning">
+    <ion-card mode="ios" id="wrapper">
+      <ion-card-content>
+
+        <!-- header -->
+        <ion-header [translucent]="true">
+          <ion-toolbar>
+            <ion-buttons slot="start" routerLink="/tabs/user/account">
+              <ion-button>
+                <ion-icon name="chevron-back" color="primary" class="text-xl"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            <ion-title>Profile</ion-title>
+            <ion-buttons slot="end" routerLink="/tabs/cart-page">
+              <ion-button>
+                <app-cart-icon></app-cart-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-item class="ion-margin-bottom ion-margin-top" lines="none">
+          <ion-icon name="car-sport" slot="start" size="small" color="dark"></ion-icon>
+          <ion-label>
+            <ul>
+              <li>
+                <div class="text-xl">Mon Profile</div>
+              </li>
+              <li><span class="text-note">Information Compte bancaire</span></li>
+            </ul>
+          </ion-label>
+        </ion-item>
+
+        <ion-list lines="none">
+
+          <ion-item>
+            <ion-label position="floating">Compte bancaire</ion-label>
+            <ion-input [(ngModel)]="account" placeholder="Votre Compte bancaire"></ion-input>
+            <!-- <ion-input *ngIf="!account" [(ngModel)]="account" placeholder="Votre Compte bancaire"></ion-input> -->
+          </ion-item>
+
+
+
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- form for changing car -->
+    <ion-card mode="ios" class="ion-margin-top" id="card-transparent">
+      <ion-card-header>
+
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button (click)="setBankAccount()" class="ion-margin-top" type="submit" expand="block" size="large" color="light">
+          Mettre a jour
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

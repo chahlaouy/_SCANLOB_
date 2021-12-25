@@ -41,3 +41,6 @@ export const UPDATE_USER_INFO_SUCCESS = "[auth page] update user info success";
 export const updateUserInfoStart = createAction(UPDATE_USER_INFO_START, props<{user: any}>());
 
 export const updateUserInfoSuccess = createAction(UPDATE_USER_INFO_SUCCESS, props<{user: AuthenticatedUser}>());
+
+export const LOGOUT = "[auth page] logout";
+export const logout = createAction(LOGOUT);

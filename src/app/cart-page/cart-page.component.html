@@ -7,7 +7,7 @@
       </ion-menu-button>
     </ion-buttons>
     <ion-title>Panier</ion-title>
-    <ion-buttons slot="end"  routerLink="/cart-page">
+    <ion-buttons slot="end"  routerLink="/tabs/cart-page">
       <ion-button>
         <app-cart-icon></app-cart-icon>
       </ion-button>
@@ -73,8 +73,28 @@
     </ion-row>
 
   </ion-grid>
-
-  <ion-button *ngIf="number != 0" class="ion-margin-top" color="primary" (click)="makePayment()" expand="block" size="large" mode="ios">
+  <ion-card class="ion-margin-top ion-margin-bottom">
+    <ion-card-header>
+      <ion-card-title>
+        Total
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="flex ion-justify-content-between">
+        <span class="text-note">Total HT</span>
+        <span class="text-note">{{total}} €</span>
+      </div>
+      <div class="flex ion-justify-content-between ion-margin-top">
+        <span class="text-note">TVA</span>
+        <span class="text-note">20%</span>
+      </div>
+      <div class="flex ion-justify-content-between ion-margin-top">
+        <span class="text-note">Total TTC</span>
+        <span class="text-note">{{totalTTC}} €</span>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-button *ngIf="number != 0" class="ion-margin-top" color="primary" routerLink="/tabs/checkout" expand="block" size="large" mode="ios">
     <ion-icon name="card" slot="start"></ion-icon>
     <ion-label >
       Commander maintenant

@@ -134,6 +134,15 @@
             </ion-button>
           </div>
         </div>
+        <div *ngIf="!authUser">
+          <ion-item class="ion-margin-top ion-margin-bottom">
+            <ion-label position="floating">Votre commentaire</ion-label>
+
+          </ion-item>
+          <div class="flex ion-justify-content-end ion-margin-top">
+            Veuillez Connecter pour commenter
+          </div>
+        </div>
       </ion-card-content>
     </ion-card>
   </div>

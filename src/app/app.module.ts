@@ -23,48 +23,47 @@ import { SettingsComponent } from './settings/settings.component';
 import { ChatComponent } from './shared/chat/chat/chat.component';
 import { SingleChatComponent } from './shared/chat/single-chat/single-chat.component';
 import { NotIconModule } from './not-icon/not-icon.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SuccessMessageComponent } from './shared/components/success-message/success-message.component';
 import { DisplayErrorComponent } from './shared/components/display-error/display-error.component';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 import { UserEffect } from './user/state/user.effects';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { EchoConfig, NgxLaravelEchoModule } from 'ngx-laravel-echo';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
 
 
-const authUser = JSON.parse(localStorage.getItem("authUser"))
-const token = authUser ? authUser.token : null ;
-export const echoConfig: EchoConfig = {
-  userModel: 'users',
-  notificationNamespace: 'App\\Notifications',
-  options: {
-      broadcaster: 'pusher',
-      key: 'anyKey',
-      auth: {
-        headers: {
-            Authorization: 'Bearer ' + token
-        },
-      },
-      wsHost: environment.BACK_END,
-      authEndpoint: `${environment.BACK_END_URL}/broadcasting/auth`,
-      host: environment.BACK_END,
-      wsPort: 6001,
-      disableStats: true,
-      // namespace: '',
-      forceTLS: false,
-  },
-};
+// const authUser = JSON.parse(localStorage.getItem("authUser"))
+// const token = authUser ? authUser.token : null ;
+// export const echoConfig: EchoConfig = {
+//   userModel: 'users',
+//   notificationNamespace: 'App\\Notifications',
+//   options: {
+//       broadcaster: 'pusher',
+//       key: 'anyKey',
+//       auth: {
+//         headers: {
+//             Authorization: 'Bearer ' + token
+//         },
+//       },
+//       wsHost: environment.BACK_END,
+//       authEndpoint: `${environment.BACK_END_URL}/broadcasting/auth`,
+//       host: environment.BACK_END,
+//       wsPort: 6001,
+//       disableStats: true,
+//       // namespace: '',
+//       forceTLS: false,
+//   },
+// };
 declare const Pusher: any;
 @NgModule({
   declarations: [
     AppComponent,
     SettingsComponent,
-    ChatComponent,
     SingleChatComponent,
     SuccessMessageComponent,
     DisplayErrorComponent,
     LoadingSpinnerComponent,
-    CartPageComponent
   ],
   entryComponents: [],
   imports: [
@@ -75,6 +74,7 @@ declare const Pusher: any;
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(AppReducer),
     EffectsModule.forRoot([AuthEffect, SharedEffect, UserEffect]),
     StoreDevtoolsModule.instrument({
@@ -91,7 +91,7 @@ declare const Pusher: any;
     StoreRouterConnectingModule.forRoot({
       serializer: CustomSerializer,
     }),
-    NgxLaravelEchoModule.forRoot(echoConfig),
+    // NgxLaravelEchoModule.forRoot(echoConfig),
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

@@ -10,9 +10,26 @@ export class UserService {
   constructor(
     private http: HttpClient
   ) { }
+  sendMessage(body: string, id: number) {
+    return this.http.post<any>(`${environment.BACK_END_URL_API}/messages`, {
+      body: body,
+      room_id: id,
+    });
+  }
+  getUserBankAccount(){
+    return this.http.get<any>(`${environment.BACK_END_URL_API}/account`);;
+  }
+  setUserBankAccount(account: any){
+    return this.http.post<any>(`${environment.BACK_END_URL_API}/account`, {
+      account
+    });;
+  }
+  getUserChatrooms(){
+    return this.http.get<any>(`${environment.BACK_END_URL_API}/chatrooms`);;
+  }
 
-  toggleSellable(id: number){
-    return this.http.get<any>(`${environment.BACK_END_URL_API}/products/sellable/${id}`);;
+  toggleSellable(id: number, price: any){
+    return this.http.get<any>(`${environment.BACK_END_URL_API}/products/sellable/${id}?price=${price}`);;
   }
 
   getUserLossProducts(){

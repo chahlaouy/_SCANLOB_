@@ -21,6 +21,7 @@ import {
   setSuccessMessage,
 } from './shared.actions';
 import { AppState } from 'src/app/state/app.state';
+import { getChatroomsSuccess, getSingleChatroomsSuccess } from 'src/app/user/state/user.actions';
 
 @Injectable()
 export class SharedEffect {
@@ -43,7 +44,8 @@ export class SharedEffect {
             map((data) => {
               this.store.dispatch(setLoadingSpinner({ status: false }));
               this.store.dispatch(setSuccessMessage({ successMessage: data }));
-              return addFoundProductSuccess();
+              this.store.dispatch(getSingleChatroomsSuccess({chatroom: data.chatroom}))
+              return addFoundProductSuccess({routeId: data.chatroom.id});
             })
           );
       }),
@@ -54,7 +56,18 @@ export class SharedEffect {
       repeat()
     );
   });
-  // LATEST PRODUCTS EFFECTS
+
+  // REDIRECT ADD FOUND PRODUCT
+  restoreLossProductRedirect$ = createEffect(() => {
+    return this.actions$.pipe(
+        ofType(addFoundProductSuccess),
+        map((action) => {
+            this.router.navigate(['/chat/' + action.routeId]);
+        })
+    )
+  }, {dispatch: false});
+
+  //LATEST PRODUCTS EFFECTS
 
   getLatestProducts$ = createEffect(() => {
     return this.actions$.pipe(

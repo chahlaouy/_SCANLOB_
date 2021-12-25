@@ -41,11 +41,4 @@ export class SharedService {
   getAllCategories() {
     return this.http.get<any>(`${environment.BACK_END_URL_API}/categories`);
   }
-
-  sendMessage(body: string, id: number) {
-    return this.http.post<any>(`${environment.BACK_END_URL_API}/messages`, {
-      body: body,
-      request_id: id,
-    });
-  }
 }

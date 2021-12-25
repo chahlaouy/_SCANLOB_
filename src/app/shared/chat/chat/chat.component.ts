@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { Store } from '@ngrx/store';
+// import { EchoService } from 'ngx-laravel-echo';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/state/app.state';
+import { getUserChatrooms } from 'src/app/user/state/user.selectors';
 import { setLoadingSpinner } from '../../store/shared.actions';
 
 @Component({
@@ -13,41 +15,16 @@ import { setLoadingSpinner } from '../../store/shared.actions';
 export class ChatComponent implements OnInit {
 
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
-
-  title: string = "الرسائل";
-  requests$: Observable<any>;
-  allReqNumber: number;
-  page: number = 1;
-
+  chatrooms: any;
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    // private echoService: EchoService,
   ) { }
 
   ngOnInit() {
-
+    this.store.select(getUserChatrooms).subscribe( chatrooms => {
+      this.chatrooms = chatrooms;
+    });
   }
 
-  loadMoreData(ev: any){
-    // ev.target.complete();
-    // App logic to determine if all data is loaded
-    // and disable the infinite scroll
-  //   if (this.allReqNumber % 2 !== 0) {
-  //     ev.target.disabled = true;
-  //     this.toggleInfiniteScroll();
-
-  //   }else{
-  //     this.store.dispatch(getRequestsStart({page: this.page +1 }))
-  //     this.page = this.page + 1;
-  //   }
-  // }
-
-  // toggleInfiniteScroll() {
-  //   this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
-  //   this.infiniteScroll.disabled = true;
-  // }
-
-  // ngOnDestroy(){
-  //   this.store.dispatch(clearRequests());
   }
-
-}

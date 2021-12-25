@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { EchoService } from 'ngx-laravel-echo';
+// import { EchoService } from 'ngx-laravel-echo';
 import { Observable } from 'rxjs';
 import { getAuthenticatedUser } from 'src/app/auth/state/auth.selectors';
 import { User } from 'src/app/models/user.model';
@@ -35,7 +35,7 @@ export class DetailsComponent implements OnInit {
   authUser: any;
   comments: any;
   constructor(
-    private echoService: EchoService,
+    // private echoService: EchoService,
     private store: Store<AppState>
   ) {}
 
@@ -56,16 +56,16 @@ export class DetailsComponent implements OnInit {
       this.comments = comments
     })
     this.store.select(getAuthenticatedUser).subscribe((user) => {
-      this.authUser = user.user;
+      this.authUser = user;
     });
 
-    this.echoService
-      .join(`loss-product.${this.product.id}`, 'public')
-      .listen(`loss-product.${this.product.id}`, 'NewComment')
-      .subscribe((comment) => {
-        console.log(comment.comment);
-        this.store.dispatch(addCommentSuccess({comment: comment}));
-      });
+    // this.echoService
+    //   .join(`loss-product.${this.product.id}`, 'public')
+    //   .listen(`loss-product.${this.product.id}`, 'NewComment')
+    //   .subscribe((comment) => {
+    //     console.log(comment.comment);
+    //     this.store.dispatch(addCommentSuccess({comment: comment}));
+    //   });
   }
 
   addComment() {

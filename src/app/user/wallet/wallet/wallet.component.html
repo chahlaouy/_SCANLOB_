@@ -1,0 +1,67 @@
+<ion-content [fullscreen]="true" color="warning">
+  <ion-card mode="ios" id="wrapper">
+    <ion-card-content>
+
+      <ion-header [translucent]="true">
+        <ion-toolbar>
+          <ion-buttons slot="start" routerLink="/tabs/user/account">
+            <ion-button>
+              <ion-icon name="chevron-back" color="primary" class="text-xl"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title>Portefeuille</ion-title>
+          <ion-buttons slot="end" routerLink="/tabs/cart-page">
+            <ion-button>
+              <app-cart-icon></app-cart-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-item class="ion-margin-bottom ion-margin-top" lines="none">
+        <ion-icon name="wallet" slot="start" size="small" color="dark"></ion-icon>
+        <ion-label>
+          <ul>
+            <li>
+              <div class="text-xl">Portefeuille</div>
+            </li>
+            <li>
+              <div class="text-note">Detailles portefeuille</div>
+            </li>
+
+          </ul>
+        </ion-label>
+      </ion-item>
+
+
+      <ion-card >
+        <ion-card-header>
+          <ion-card-subtitle>
+           <ion-item>
+             <ion-label>Votre compte</ion-label>
+             <ion-icon name="layers-outline" slot="end" color="primary"></ion-icon>
+           </ion-item>
+          </ion-card-subtitle>
+          <ion-card-title>
+
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="ion-text-center text-xl">
+            <span> 100.00 euro</span>
+
+          </div>
+          <div class="ion-margin-top text-note ion-text-center">
+
+
+          </div>
+          <ion-button class="ion-margin-top" type="submit" expand="block" size="large" color="primary" routerLink="transactions">
+            Transactions
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

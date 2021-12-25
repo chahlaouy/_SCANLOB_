@@ -1,0 +1,41 @@
+ion-content{
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-start: 0px;
+  --padding-end: 0px;
+}
+ion-card-content{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+ion-card#wrapper{
+  margin: 8px;
+}
+ion-toolbar{
+  padding: 0px;
+  --padding-top: 0px !important;
+  --background: transparent !important;
+}
+ion-item{
+  border-radius: 10px !important;
+}
+#card-transparent{
+  --background: transparent !important;
+  box-shadow:none !important;
+}
+.badge, .badge-available{
+  padding: 5px 20px;
+  border-radius: 10px;
+  line-height: 100%;
+  text-align: center;
+}
+.badge{
+  background-color: rgb(252, 68, 68);
+  color: #fff;
+}
+.badge-available{
+  background-color: #46f85b;
+  color: rgb(28, 28, 28);
+}

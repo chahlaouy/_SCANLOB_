@@ -9,15 +9,6 @@ export const setErrorMessage = createAction(SET_ERROR_MESSAGE, props<{errorMessa
 export const SET_SUCCESS_MESSAGE = '[shared state] success message';
 export const setSuccessMessage = createAction(SET_SUCCESS_MESSAGE, props<{successMessage: any}>());
 
-export const GET_ALL_MESSAGES_SUCCESS = "[shared state] get all messages success";
-export const getAllMessagesSuccess = createAction(GET_ALL_MESSAGES_SUCCESS, props<{messages: any}>());
-
-export const SEND_MESSAGE_START = "[shared state] send message start";
-export const sendMessageStart = createAction(SEND_MESSAGE_START, props<{body: string, id: number}>());
-
-export const SEND_MESSAGE_SUCCESS = "[shared state] get send message success";
-export const sendMessageSuccess = createAction(SEND_MESSAGE_SUCCESS, props<{message: any}>());
-
 export const GET_LATEST_PRODUCTS_START = "[shared state] get latest products start";
 export const getLatestProductsStart = createAction(GET_LATEST_PRODUCTS_START, props<{page: number}>())
 
@@ -71,7 +62,7 @@ export const addFoundProductStart = createAction(ADD_FOUND_PRODUCT_START, props<
   location: any,
   status: any
   }>());
-export const addFoundProductSuccess = createAction(ADD_FOUND_PRODUCT_SUCCESS);
+export const addFoundProductSuccess = createAction(ADD_FOUND_PRODUCT_SUCCESS, props<{routeId: any}>());
 
 
 

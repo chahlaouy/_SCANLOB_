@@ -1,0 +1,103 @@
+<ion-content [fullscreen]="true" color="warning">
+  <ion-card mode="ios" id="wrapper">
+    <ion-card-content>
+
+      <ion-header [translucent]="true">
+        <ion-toolbar>
+          <ion-buttons slot="start" routerLink="/tabs/user/wallet">
+            <ion-button>
+              <ion-icon name="chevron-back" color="primary" class="text-xl"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title>Transactions</ion-title>
+          <ion-buttons slot="end" routerLink="/tabs/cart-page">
+            <ion-button>
+              <app-cart-icon></app-cart-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-item class="ion-margin-bottom ion-margin-top" lines="none">
+        <ion-icon name="wallet" slot="start" size="small" color="dark"></ion-icon>
+        <ion-label>
+          <ul>
+            <li>
+              <div class="text-xl">Transactions</div>
+            </li>
+            <li>
+              <div class="text-note">Liste des Transactions</div>
+            </li>
+
+          </ul>
+        </ion-label>
+      </ion-item>
+
+      <!-- transaction list -->
+      <!-- *ngIf="transactions$ | async as transactions" -->
+      <div >
+        <!-- *ngFor="let transaction of transactions" -->
+        <ion-card mode="ios">
+          <ion-card-header>
+            <ion-card-subtitle>
+             <ion-item>
+               <ion-label>Produit 1</ion-label>
+               <ion-icon name="cube" slot="end" color="primary"></ion-icon>
+             </ion-item>
+            </ion-card-subtitle>
+            <ion-card-title>
+
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+
+              <ion-item class="ion-margin-bottom">
+                <ion-label slot="start">Totale</ion-label>
+                <ion-label>
+                  <span>
+                    122 €
+                  </span>
+
+                </ion-label>
+              </ion-item>
+
+
+              <ion-item class="ion-margin-bottom">
+                <ion-label slot="start">Montant</ion-label>
+                <ion-label>
+                  <span>110 €</span>
+
+                </ion-label>
+              </ion-item>
+
+              <ion-item>
+                <ion-label slot="start">Date</ion-label>
+                <ion-label>
+                  15/02/2021
+                </ion-label>
+              </ion-item>
+
+              <ion-item>
+                <ion-label slot="start">Etat</ion-label>
+                <!-- *ngIf="transaction.wallet == 0" -->
+                <ion-label >
+                  <div class="badge-available">Payée</div>
+                </ion-label>
+                <!-- <ion-label *ngIf="transaction.wallet > 0">
+                  <div class="badge">في الانتظار</div>
+                </ion-label> -->
+              </ion-item>
+
+            </ion-list>
+
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

@@ -4,7 +4,6 @@ export interface SharedState{
     successMessage: any,
     products: any,
     lossProducts: any,
-    messages: any,
     categories: any,
     cart: any,
     productComments: any
@@ -16,7 +15,6 @@ export const initialState: SharedState = {
     successMessage: null,
     products: [],
     lossProducts: [],
-    messages: [],
     categories: [],
     cart: [],
     productComments: []

@@ -6,13 +6,13 @@
       <!-- header -->
       <ion-header [translucent]="true">
         <ion-toolbar>
-          <ion-buttons slot="start" routerLink="/user/products">
+          <ion-buttons slot="start" routerLink="/tabs/user/products">
             <ion-button>
               <ion-icon name="chevron-back" color="primary" class="text-xl"></ion-icon>
             </ion-button>
           </ion-buttons>
           <ion-title>Mes produits</ion-title>
-          <ion-buttons slot="end" routerLink="/cart-page">
+          <ion-buttons slot="end" routerLink="/tabs/cart-page">
             <ion-button>
               <app-cart-icon></app-cart-icon>
             </ion-button>
@@ -69,24 +69,11 @@
           </div>
         </div>
         <ion-item>
-          <ion-toggle [(ngModel)]="isSellable" (ionChange)="toggleSellable($event)"></ion-toggle>
+          <ion-button color="light" *ngIf="isSellable" (click)="removeSellable()">Relever le produit</ion-button>
+          <ion-button color="light" *ngIf="!isSellable" (click)="toggleSellable()">Envendette</ion-button>
+          <!-- <ion-toggle [(ngModel)]="isSellable" (ionChange)="toggleSellable($event)"></ion-toggle> -->
         </ion-item>
-        <!-- toggle button -->
-        <!-- <div id="silent-mode">
 
-
-          <div class="toggle-button-cover">
-            <div class="button-cover">
-              <div class="button r" id="button-1">
-                <input (change)="toggleSellable($event)" value="oui" type="radio" class="checkbox">
-                <div class="knobs"></div>
-                <div class="layer"></div>
-              </div>
-            </div>
-          </div>
-
-
-        </div> -->
       </div>
     </ion-card-content>
   </ion-card>

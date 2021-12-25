@@ -23,6 +23,10 @@ import { TheftProductComponent } from './theft-products/product/product.componen
 import { TheftProductsComponent } from './theft-products/theft-products.component';
 import { FoundedProductsComponent } from './founded-products/founded-products.component';
 import { DetailComponent } from './founded-products/detail/detail.component';
+import { BankAccountComponent } from './bank-account/bank-account.component';
+import { ModalPriceComponent } from './products/product/modal-price/modal-price.component';
+import { WalletComponent } from './wallet/wallet/wallet.component';
+import { TransactionsComponent } from './wallet/transactions/transactions.component';
 
 
 
@@ -40,7 +44,11 @@ import { DetailComponent } from './founded-products/detail/detail.component';
     TheftProductComponent,
     TheftProductsComponent,
     FoundedProductsComponent,
-    DetailComponent
+    DetailComponent,
+    BankAccountComponent,
+    ModalPriceComponent,
+    WalletComponent,
+    TransactionsComponent
   ],
   imports: [
     NotIconModule,

@@ -7,7 +7,6 @@ import {
   getLossProductsSuccess,
   putProductComments,
   removeProductFromCart,
-  sendMessageSuccess,
   setErrorMessage,
   setLoadingSpinner,
   setSuccessMessage,
@@ -34,13 +33,6 @@ const _sharedReducer = createReducer(
       successMessage: action.successMessage,
     };
   }),
-
-  on(sendMessageSuccess, (state, action) => {
-    return {
-      ...state,
-      messages: [action.message, ...state.messages ],
-    };
-  }),
   on(getLatestProductsSuccess, (state, action) => {
     return {
       ...state,
@@ -54,6 +46,7 @@ const _sharedReducer = createReducer(
     }
   }),
   on(addProductToCart, (state, action) => {
+
     return {
       ...state,
       cart: [action.product, ...state.cart]

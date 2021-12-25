@@ -1,0 +1,30 @@
+ion-content{
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-start: 0px;
+  --padding-end: 0px;
+}
+ion-card-content{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+ion-card#wrapper{
+  margin: 8px;
+}
+ion-toolbar{
+  padding: 0px;
+  --padding-top: 0px !important;
+  --background: transparent !important;
+}
+ul{
+  list-style: none;
+}
+#card-transparent{
+  --background: transparent !important;
+  box-shadow: none !important;
+}
+
+
+

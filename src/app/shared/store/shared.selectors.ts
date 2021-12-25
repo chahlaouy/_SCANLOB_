@@ -47,11 +47,6 @@ export const getProductById = createSelector(
   }
 );
 
-export const getMessages = createSelector(getSharedState, (state) => {
-  return state.messages;
-});
-
-
 export const getCategories = createSelector(getSharedState, (state) => {
   return state.categories;
 });
@@ -89,6 +84,14 @@ export const getCartItems = createSelector(getSharedState, (state) => {
 
 export const getCartItemsNumber = createSelector(getSharedState, (state) => {
   return state.cart.length;
+});
+
+export const getCartTotalPrice = createSelector(getSharedState, (state) => {
+  var total = 0;
+  state.cart.forEach(item => {
+    total = total + item.price;
+  });
+  return total;
 });
 
 export const getProductComments = createSelector(getSharedState, (state) => {

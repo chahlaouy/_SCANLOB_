@@ -74,6 +74,13 @@
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" (click)="logout()" lines="none" detail="false">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>Se déconnecter</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
         </ion-list>
       </ion-content>
     </ion-menu>
