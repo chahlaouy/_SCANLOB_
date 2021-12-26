@@ -19,7 +19,7 @@
       </ion-header>
       <ion-list *ngIf="chatrooms">
         <ion-item-sliding *ngFor="let chatroom of chatrooms">
-          <ion-item color="light" class="ion-margin-bottom" [routerLink]="chatroom.id">
+          <ion-item color="light" class="ion-margin-bottom" [routerLink]="'/chat/' + chatroom.id">
             <ion-avatar slot="start">
               <img src="../../../../assets/avatar.png">
             </ion-avatar>

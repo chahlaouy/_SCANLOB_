@@ -14,7 +14,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <div *ngIf="product$ | async as product">
+  <div *ngIf="product">
     <ion-item class="ion-margin-bottom" lines="none">
       <ion-icon
         name="list-outline"
@@ -51,13 +51,13 @@
           <div>
             {{product.sub_category.name}}
           </div>
-          <div class="flex ion-align-items-center">
+          <!-- <div class="flex ion-align-items-center">
             <ion-icon name="star" color="warning"></ion-icon>
             <ion-icon name="star" color="warning"></ion-icon>
             <ion-icon name="star" color="warning"></ion-icon>
             <ion-icon name="star" color="warning"></ion-icon>
             <ion-icon name="star" color="warning"></ion-icon>
-          </div>
+          </div> -->
         </ion-card-subtitle>
         <ion-card-title>{{product.name}}</ion-card-title>
         <h1 class="">{{product.price}} €</h1>
@@ -65,6 +65,10 @@
           {{product.description}}
         </div>
 
+        <ion-button expand="block" size="large" color="primary" mode="ios" class="ion-margin-top ion-margin-bottom" (click)="contactUser()">
+          <ion-icon name="chatbubbles-outline" slot="start"></ion-icon>
+          <ion-label slot="end">Contacter le propriétaire</ion-label>
+        </ion-button>
         <ion-button expand="block" size="large" color="warning" mode="ios" class="ion-margin-top" (click)="addProductToCart(product)">
           <ion-icon name="cart" slot="start"></ion-icon>
           <ion-label slot="end">Ajouter au panier</ion-label>
@@ -72,6 +76,94 @@
       </ion-card-header>
     </ion-card>
 
+    <ion-item lines="none" detail="false">
+      <ion-label slot="end">
+        <div class="flex ion-align-items-center flex-1">
+          <!-- <div class="flex ion-align-items-center ion-margin-end">
+            <ion-icon
+              name="heart"
+              class="text-lg ion-margin-end"
+              color="danger"
+            ></ion-icon>
+            <span class="text-xs">123</span>
+          </div> -->
+
+          <div class="flex ion-align-items-center">
+            <ion-icon
+              name="chatbubbles"
+              class="text-lg ion-margin-end"
+              color="primary"
+            ></ion-icon>
+            <span class="text-xs">
+              {{product.comments_count}}
+            </span>
+          </div>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-card id="card_transparent" class="ion-no-padding ion-no-margin">
+      <ion-card-header class="ion-no-padding ion-no-margin">
+        <ion-card-title>
+          <ion-item lines="full" detail="false">
+            <ion-label> Commentaires </ion-label>
+          </ion-item>
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content class="ion-no-padding ion-no-margin ion-margin-top">
+        <div *ngIf="comments.length > 0">
+          <div class="flex ion-align-items-start ion-margin-bottom ion-margin-top" *ngFor="let comment of comments">
+            <div>
+              <ion-avatar class="ion-margin-end">
+                <img src="../../../../assets/avatar.png">
+              </ion-avatar>
+            </div>
+            <div>
+              <div class="text-note ion-margin-bottom flex ion-align-items-center">
+                <span class="ion-margin-end">
+                  {{comment.author.username}}
+                </span>
+                <span class="ion-margin-end font-bold">a dit</span>
+                <span>
+                  {{comment.created_at}}
+                </span>
+              </div>
+              <div class="text-sm"
+                >
+                {{comment.body}}
+              </div
+              >
+
+            </div>
+          </div>
+        </div>
+        <div *ngIf="comments.length === 0">
+          <ion-item lines="none" detail="false">
+            <span class="text-note">Il n'y a pas encore de commentaires soyez le premier</span>
+          </ion-item>
+        </div>
+        <div *ngIf="authUser">
+          <ion-item>
+            <ion-label position="floating">Votre commentaire</ion-label>
+            <ion-textarea [(ngModel)]="body"></ion-textarea>
+          </ion-item>
+          <div class="flex ion-justify-content-end">
+            <ion-button size="small" color="primary" (click)="addComment()">
+              Commenter
+            </ion-button>
+          </div>
+        </div>
+        <div *ngIf="!authUser">
+          <ion-item class="ion-margin-top ion-margin-bottom">
+            <ion-label position="floating">Votre commentaire</ion-label>
+
+          </ion-item>
+          <div class="flex ion-justify-content-end ion-margin-top">
+            Veuillez Connecter pour commenter
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
 
 
   </div>

@@ -35,7 +35,7 @@
         <ion-list lines="none">
 
           <ion-item>
-            <ion-label>Categorie</ion-label>
+            <ion-label>Catégorie</ion-label>
             <ion-select (ionChange)="changeCategory($event)" formControlName="category">
               <ion-select-option value="" disabled>Choisissez une catégorie</ion-select-option>
               <ion-select-option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}
@@ -72,7 +72,7 @@
           </ion-item>
 
           <ion-item>
-            <ion-label>Payée</ion-label>
+            <ion-label>Pays</ion-label>
             <ion-input formControlName="city" placeholder="payée(optionnelle)"></ion-input>
           </ion-item>
 

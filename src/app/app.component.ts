@@ -29,13 +29,13 @@ export class AppComponent  implements OnInit{
   authUserId: any;
 
   public appPages = [
-    { title: 'Acceuil', url: '/', icon: 'home' },
+    { title: 'Accueil', url: '/', icon: 'home' },
     { title: 'Mon compte', url: '/tabs/user/account', icon: 'person' },
     { title: 'Boîte de réception', url: '/tabs/chat', icon: 'chatbubbles' },
     { title: 'Mes produits', url: '/tabs/user/products', icon: 'cube' },
     { title: 'Objets perdus', url: '/tabs/user/loss-products', icon: 'remove-circle' },
-    { title: 'Objets volu', url: '/tabs/user/theft-products', icon: 'warning' },
-    { title: 'Objets trouvé', url: '/tabs/user/found-products', icon: 'cube' },
+    { title: 'Objets volés', url: '/tabs/user/theft-products', icon: 'warning' },
+    { title: 'Objets trouvés', url: '/tabs/user/found-products', icon: 'cube' },
   ];
 
   chatrooms: any;

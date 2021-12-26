@@ -155,4 +155,30 @@ export class SharedEffect {
       repeat()
     );
   });
+  // ADD COMMENT
+
+  // getProductsAfterAddingComment$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(addCommentSuccess),
+  //     mergeMap((action) => {
+  //       return this.sharedService
+  //         .addComment(action.body, action.product_id)
+  //         .pipe(
+  //           map((comment) => {
+  //             this.store.dispatch(setLoadingSpinner({ status: false }));
+  //             return addCommentSuccess({ comment: comment });
+  //           })
+  //         );
+  //     }),
+  //     catchError((errorResponse) => {
+  //       this.store.dispatch(setLoadingSpinner({ status: false }));
+  //       return of(setErrorMessage({ errorMessage: errorResponse.error }));
+  //     }),
+  //     repeat()
+  //   );
+  // });
+
+
+
+
 }
